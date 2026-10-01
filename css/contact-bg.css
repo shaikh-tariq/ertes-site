@@ -1,0 +1,133 @@
+/* ERTES — Contact page: same living background + pointer interaction as the Homepage.
+   Loaded AFTER contact.css, so everything here overrides the old monochrome
+   light/dark section mix. Layers (created by js/contact-bg.js): #fx ambient glow + grid,
+   #gr film grain, #gn interactive particle network, #cur/#cdot custom cursor, #hud read-out.
+   Colour tokens are the Homepage dark/futuristic ones. */
+
+:root { --bgd: #030913; --bgb: #2cc4f5; --bga: #8fdcff; --soft: #9fb7c6; --cy: rgba(44,196,245,.22); color-scheme: dark; }
+body { background: var(--bgd); color: #e6f3fb; }
+:focus-visible, .light :focus-visible, .on-light :focus-visible { outline-color: var(--bgb); }
+
+/* ---------- ambient layers (identical to Homepage) ---------- */
+#fx { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+#fx:before {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(44,196,245,.06) 1px, #0000 1px), linear-gradient(90deg, rgba(44,196,245,.06) 1px, #0000 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000, #0000 75%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000, #0000 75%);
+}
+#fx i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .45; animation: bgfl 24s ease-in-out infinite alternate; }
+#fx i:nth-child(1) { width: 46vw; height: 46vw; left: -12vw; top: -10vw; background: #0e5f8c; }
+#fx i:nth-child(2) { width: 38vw; height: 38vw; right: -10vw; top: 30vh; background: #4b2c9a; animation-delay: -8s; }
+#fx i:nth-child(3) { width: 34vw; height: 34vw; left: 30vw; bottom: -14vw; background: #0b7a8f; animation-delay: -15s; }
+@keyframes bgfl { to { transform: translate(8vw, 6vh) scale(1.25); } }
+#gr {
+  position: fixed; inset: 0; z-index: 4; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+#gr:after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,.5) 0 1px, #0000 1px 3px); opacity: .25; }
+
+/* interactive particle network (fixed, never blocks clicks) */
+#gn { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+
+/* custom cursor + HUD (cursor above the full-screen menu, which is z-index 90) */
+#cur { position: fixed; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1px solid var(--bgb); border-radius: 50%; z-index: 200; pointer-events: none; box-shadow: 0 0 14px rgba(44,196,245,.5); transition: width .25s, height .25s, margin .25s, background .25s; }
+#cur.h { width: 60px; height: 60px; margin: -30px 0 0 -30px; background: rgba(44,196,245,.12); }
+#cdot { position: fixed; left: 0; top: 0; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--bgb); z-index: 201; pointer-events: none; box-shadow: 0 0 10px var(--bgb); }
+#hud { position: fixed; right: 18px; bottom: 14px; z-index: 40; font: 500 10px/1.6 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .16em; color: var(--bga); opacity: .7; pointer-events: none; text-transform: uppercase; }
+#hud b { color: #3dff9a; animation: bgbk 1.4s infinite; }
+@keyframes bgbk { 50% { opacity: 0; } }
+@media (pointer: coarse), (max-width: 700px) { #cur, #cdot, #hud { display: none; } }
+
+/* ---------- let the fixed background show through every section ---------- */
+#hero, #form, #info, #faq, #cta, #shutter { background: transparent; }
+#hero { background: radial-gradient(ellipse 70% 50% at 50% 72%, rgba(44,196,245,.16), #0000 70%); color: #e6f3fb; }
+#info, #faq { color: #e6f3fb; }
+
+/* preloader */
+#pre { background: var(--bgd); color: var(--bga); }
+#pre .frame { background: rgba(44,196,245,.06); box-shadow: inset 0 0 0 1px rgba(44,196,245,.25), 0 0 40px rgba(44,196,245,.12); }
+#pre .frame i:before, #pre .frame i:after { background: var(--bgb); }
+#pre svg.lg { color: var(--bga); filter: drop-shadow(0 0 18px rgba(44,196,245,.6)); }
+#pre .tg, #pre .ct { color: #6f8ca0; }
+
+/* nav: Homepage style (always light text, soft scrim, glowing pill) */
+#top, #top.light { color: #e6f3fb; }
+#top:before { content: ""; position: absolute; inset: 0 0 -24px; z-index: -1; pointer-events: none; background: linear-gradient(rgba(3,9,19,.7), rgba(3,9,19,0)); }
+.pill:hover { color: var(--bgb); box-shadow: 0 0 18px rgba(44,196,245,.35); }
+.pill.fill, #top.light .pill.fill { background: linear-gradient(90deg, var(--bgb), #7c8cff); color: #031018; border-color: transparent; box-shadow: 0 0 22px rgba(44,196,245,.35); }
+.pill.fill:hover, #top.light .pill.fill:hover { color: #031018; box-shadow: 0 0 38px rgba(44,196,245,.75); }
+
+/* menu overlay */
+#menu { background: rgba(3,9,19,.97); }
+#menu a.m small { color: var(--bgb); }
+#menu a.m:hover { color: var(--bgb); text-shadow: 0 0 14px var(--bgb); }
+#menu a.m.cur { color: var(--bga); }
+#menu .mf { color: var(--soft); }
+
+/* hero: the logo rig, re-lit for the dark background */
+#hero h1 { color: #e6f3fb; text-shadow: 0 0 40px rgba(44,196,245,.25); }
+#hero p.sub { color: var(--soft); }
+#hero .vl { background: var(--cy); }
+#hero .dot { border-color: var(--bgb); }
+#hero .dot:after { background: var(--bgb); }
+#hero .rig use { color: var(--bga) !important; }
+#hero .rig .g2 use, #hero .rig .g3 use { color: var(--bgb) !important; }
+#hero .rig g[style*="drop-shadow"] { filter: drop-shadow(0 0 26px rgba(44,196,245,.55)) !important; }
+#hero .rig line { stroke: rgba(143,220,255,.35); }
+
+/* shutter: bars wipe in as translucent glass instead of solid black */
+#shutter b { background: rgba(5,16,30,.9); border-bottom: 1px solid var(--cy); }
+
+/* form */
+#form .eyebrow, #cta .eyebrow { color: var(--bga); }
+#form p.sub { color: var(--soft); }
+.fld input, .fld textarea, .sel > button { background: rgba(44,196,245,.04); border-color: var(--cy); }
+.fld input::placeholder, .fld textarea::placeholder { color: #6f8ca0; }
+.sel > button { color: #6f8ca0; }
+.fld input:focus, .fld textarea:focus { border-color: var(--bgb); background: rgba(44,196,245,.07); box-shadow: 0 0 18px rgba(44,196,245,.2); }
+.sel > button:hover, .sel.open > button { border-color: var(--bgb); }
+.sel ul { background: rgba(5,16,30,.97); border-color: rgba(44,196,245,.4); box-shadow: 0 0 24px rgba(44,196,245,.15); }
+.sel li { color: var(--soft); }
+.sel li:hover, .sel li.act { background: rgba(44,196,245,.14); color: #fff; }
+.send { border-bottom-color: rgba(44,196,245,.6); }
+.send:hover { color: var(--bgb); text-shadow: 0 0 12px var(--bgb); }
+#fs { color: var(--soft); }
+.or { color: #6f8ca0; }
+.or:before, .or:after { background: var(--cy); }
+.call { border-color: rgba(44,196,245,.5); }
+.call:hover { background: linear-gradient(90deg, var(--bgb), #7c8cff); color: #031018; border-color: transparent; box-shadow: 0 0 30px rgba(44,196,245,.55); }
+.pe { color: var(--soft); }
+.pe a:hover { border-color: var(--bgb); }
+
+/* info (was light) */
+#info .d { color: var(--soft); }
+#info .em small { color: #6f8ca0; }
+#info .em a:hover { border-color: var(--bgb); }
+.plus { background: linear-gradient(90deg, var(--cy) calc(50% - 22px), transparent 0, transparent calc(50% + 22px), var(--cy) 0); }
+.plus:after { background: none; color: var(--bgb); }
+
+/* FAQ (was light) */
+#faq .cap { color: var(--soft); }
+.acc { border-top-color: var(--cy); }
+.it { border-bottom-color: var(--cy); }
+.it > button:hover { color: var(--bgb); }
+.it .pn p { color: var(--soft); }
+
+/* CTA / footer */
+#cta .lk a { border-bottom-color: rgba(44,196,245,.4); }
+#cta .lk a:hover { border-color: var(--bgb); color: var(--bgb); }
+#cta .meta { color: var(--soft); }
+#cta .meta b { color: #6f8ca0; }
+#cta .meta a:hover { color: var(--bgb); opacity: 1; }
+#cta .copy { color: #6f8ca0; }
+#cta .copy a:hover { color: var(--bgb); }
+#cta .hint { color: var(--bga); }
+#cta .clock { color: #6f8ca0; }
+
+/* cookie bar: dark glass in every section */
+#ck, #ck.dark { background: rgba(5,16,30,.9); color: #cfe8f5; border: 1px solid rgba(44,196,245,.3); box-shadow: 0 0 24px rgba(44,196,245,.12); }
+#ck button:hover { color: var(--bgb); }
+
+@media (prefers-reduced-motion: reduce) { #fx i, #hud b { animation: none; } }

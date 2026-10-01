@@ -1,0 +1,38 @@
+/* ERTES — shared bits used by every page (nav menu, footer links, newsletter) */
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #2CC4F5;outline-offset:3px}
+
+/* ---------- mobile menu (built by js/site.js) ---------- */
+.mbtn{display:none;position:relative;flex:0 0 auto;width:42px;height:42px;padding:0;border:0;background:none;color:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mbtn span{position:absolute;left:10px;right:10px;height:2px;background:currentColor;border-radius:2px;transition:.3s}
+.mbtn span:nth-child(1){top:16px}
+.mbtn span:nth-child(2){top:24px}
+.mbtn.open span:nth-child(1){top:20px;transform:rotate(45deg)}
+.mbtn.open span:nth-child(2){top:20px;transform:rotate(-45deg)}
+
+#mnav{position:fixed;inset:0;z-index:45;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:90px 8vw 40px;overflow-y:auto;background:rgba(3,9,19,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+#mnav.open{opacity:1;visibility:visible}
+#mnav a{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:clamp(1.6rem,7vw,2.2rem);font-weight:700;line-height:1.2;color:#F4F7F9;text-decoration:none;padding:8px 0;opacity:0;transform:translateY(14px);transition:opacity .4s,transform .4s,color .2s}
+#mnav.open a{opacity:1;transform:none;transition-delay:calc(var(--i,0)*45ms + 80ms)}
+#mnav a:hover,#mnav a.cur{color:#9CCDE8}
+#mnav a.mcta{align-self:flex-start;margin-top:22px;padding:12px 22px;border:1px solid #9CCDE8;border-radius:8px;font-size:1rem;font-weight:600}
+
+@media(max-width:1000px){
+  nav ul{display:none!important}
+  .mbtn{display:block}
+  nav > div > a:not(.lgo){margin-left:auto}
+}
+@media(max-width:560px){
+  nav > div > a:not(.lgo){display:none}
+  .mbtn{margin-left:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  #mnav,#mnav a,.mbtn span{transition:none!important}
+}
+
+/* ---------- footer: legal links + newsletter message ---------- */
+.fb a,.fb2 a{display:inline!important;margin:0!important;color:inherit!important;text-decoration:underline;text-underline-offset:3px}
+.fb a:hover,.fb2 a:hover{opacity:.75}
+.nl-msg{flex-basis:100%;margin:6px 0 0;font-size:12px;line-height:1.4;min-height:1em}
+.nl-msg.ok{color:#7be7a5}
+.nl-msg.err{color:#ff9b9b}

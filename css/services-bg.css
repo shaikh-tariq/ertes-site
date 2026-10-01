@@ -1,0 +1,112 @@
+/* ERTES — Services page: same living background + pointer interaction as the Homepage.
+   Loaded AFTER the page's inline styles. Layers (created by js/services-bg.js):
+   #fx ambient glow + grid, #gr film grain, #gn interactive particle network,
+   #cur/#cdot custom cursor, #hud read-out.
+   The sticky service panels must stay opaque (they stack over each other), so they are painted
+   with the same glow + grid as #fx; the hero, process, CTA and footer are transparent and show
+   the live layer. Colour tokens are the Homepage dark/futuristic ones. */
+
+:root { --bgd: #030913; --bgb: #2cc4f5; --bga: #8fdcff; --soft: #9fb7c6; --cy: rgba(44,196,245,.22); color-scheme: dark; }
+body.sv { background: var(--bgd); color: #e6f3fb; }
+
+/* ---------- ambient layers (identical to Homepage) ---------- */
+#fx { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+#fx:before {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(44,196,245,.06) 1px, #0000 1px), linear-gradient(90deg, rgba(44,196,245,.06) 1px, #0000 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000, #0000 75%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000, #0000 75%);
+}
+#fx i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .45; animation: bgfl 24s ease-in-out infinite alternate; }
+#fx i:nth-child(1) { width: 46vw; height: 46vw; left: -12vw; top: -10vw; background: #0e5f8c; }
+#fx i:nth-child(2) { width: 38vw; height: 38vw; right: -10vw; top: 30vh; background: #4b2c9a; animation-delay: -8s; }
+#fx i:nth-child(3) { width: 34vw; height: 34vw; left: 30vw; bottom: -14vw; background: #0b7a8f; animation-delay: -15s; }
+@keyframes bgfl { to { transform: translate(8vw, 6vh) scale(1.25); } }
+#gr {
+  position: fixed; inset: 0; z-index: 4; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+#gr:after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,.5) 0 1px, #0000 1px 3px); opacity: .25; }
+
+/* interactive particle network (fixed, never blocks clicks; sits above <main>, which is z-index 1) */
+#gn { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+
+/* custom cursor + HUD (cursor above the mobile menu, which is z-index 45) */
+#cur { position: fixed; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1px solid var(--bgb); border-radius: 50%; z-index: 200; pointer-events: none; box-shadow: 0 0 14px rgba(44,196,245,.5); transition: width .25s, height .25s, margin .25s, background .25s; }
+#cur.h { width: 60px; height: 60px; margin: -30px 0 0 -30px; background: rgba(44,196,245,.12); }
+#cdot { position: fixed; left: 0; top: 0; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--bgb); z-index: 201; pointer-events: none; box-shadow: 0 0 10px var(--bgb); }
+#hud { position: fixed; right: 18px; bottom: 14px; z-index: 40; font: 500 10px/1.6 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .16em; color: var(--bga); opacity: .7; pointer-events: none; text-transform: uppercase; }
+#hud b { color: #3dff9a; animation: bgbk 1.4s infinite; }
+@keyframes bgbk { 50% { opacity: 0; } }
+@media (pointer: coarse), (max-width: 700px) { #cur, #cdot, #hud { display: none; } }
+
+/* ---------- loader ---------- */
+#ld { background: var(--bgd); color: var(--bga); }
+#ld svg { filter: drop-shadow(0 0 18px rgba(44,196,245,.6)); }
+
+/* ---------- nav: always light text (the sections behind it are all dark now) ---------- */
+html body nav [data-on], html body nav a[data-on], html body nav .lgo[data-on], html body .mbtn[data-on] { color: #e6f3fb !important; }
+html body nav .bt.o, html body nav .bt.o[data-on=light], html body nav .bt.o[data-on=dark] { color: var(--bgb) !important; border-color: var(--bgb); background: none; }
+html body nav .bt.o:hover { color: var(--bga) !important; box-shadow: 0 0 18px rgba(44,196,245,.35); }
+nav a:hover { color: var(--bga); text-shadow: 0 0 12px var(--bgb); }
+nav:before { content: ""; position: absolute; inset: 0 0 -24px; z-index: -1; pointer-events: none; background: linear-gradient(rgba(3,9,19,.7), rgba(3,9,19,0)); }
+#mnav { background: rgba(3,9,19,.97); }
+#mnav a:hover, #mnav a.cur { color: var(--bgb); }
+
+/* ---------- hero: transparent so the live background shows; the 3D orbit stays on top ---------- */
+.hero { background: transparent; }
+.hin { background: radial-gradient(60vw 50vh at 50% 45%, rgba(44,196,245,.10), transparent 70%); }
+.tg { color: var(--bga); }
+.hc h1 { text-shadow: 0 0 40px rgba(44,196,245,.25); }
+.hl a { color: var(--bga); }
+.lk:hover, .stm .lk:hover { color: var(--bgb); }
+
+/* ---------- sticky service panels: opaque (they stack), painted like the Homepage ---------- */
+.stack { background: transparent; }
+.svc {
+  background:
+    radial-gradient(ellipse 60% 70% at 8% 0%, rgba(14,95,140,.50), transparent 70%),
+    radial-gradient(ellipse 55% 60% at 100% 65%, rgba(75,44,154,.38), transparent 70%),
+    radial-gradient(ellipse 50% 50% at 45% 110%, rgba(11,122,143,.32), transparent 70%),
+    linear-gradient(rgba(44,196,245,.06) 1px, #0000 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, rgba(44,196,245,.06) 1px, #0000 1px) 0 0 / 56px 56px,
+    var(--bgd);
+  box-shadow: 0 -30px 70px rgba(0,0,0,.55), 0 -1px 0 var(--cy);
+}
+.vis { background: transparent; }
+.txt { background: rgba(3,9,19,.38); border-left: 1px solid var(--cy); }
+.cap, .no { color: var(--bga); }
+.card { border-color: rgba(44,196,245,.32); box-shadow: 0 40px 90px rgba(0,0,0,.5), 0 0 40px rgba(44,196,245,.10), inset 0 1px 0 rgba(255,255,255,.14); }
+.chip b { background: rgba(5,16,30,.94); border-color: rgba(44,196,245,.45); }
+.ti p { color: var(--soft); }
+.ti h3 { color: var(--bga); }
+.caps li { color: #e6f3fb; }
+.caps li:after { background: rgba(44,196,245,.4); }
+.lk.dk { color: #e6f3fb; }
+.lk.dk:hover { color: var(--bgb); }
+
+/* ---------- process (was light) ---------- */
+.proc { background: transparent; }
+.ey { color: var(--bga); }
+.sub { color: var(--soft); }
+.pg:before { background: var(--cy); }
+.pf { background: linear-gradient(90deg, var(--bgb), #7c8cff); box-shadow: 0 0 14px rgba(44,196,245,.7); }
+.ps small { color: var(--bga); }
+.ps p { color: var(--soft); }
+.pl { background: #06182a; border: 1px solid rgba(44,196,245,.55); color: var(--bga); }
+.pl.on { background: var(--bgb); color: #031018; border-color: var(--bgb); box-shadow: 0 0 0 7px rgba(44,196,245,.2), 0 0 18px rgba(44,196,245,.6); }
+@media (max-width: 900px) {
+  .pf { background: linear-gradient(180deg, var(--bgb), #7c8cff); }
+  .txt { border-left: 0; border-top: 1px solid var(--cy); }
+}
+
+/* ---------- CTA + footer: see-through so the glow runs under them ---------- */
+.cta { background: transparent; }
+.cr { border-top-color: var(--cy); color: var(--bga); }
+.sv footer { background: rgba(3,9,19,.55); border-top: 1px solid var(--cy); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.sv footer input { background: rgba(44,196,245,.04); border-color: var(--cy); }
+.sv footer input:focus { border-color: var(--bgb); box-shadow: 0 0 18px rgba(44,196,245,.2); outline: none; }
+.sv .fb { border-top-color: var(--cy); }
+
+@media (prefers-reduced-motion: reduce) { #fx i, #hud b { animation: none; } }

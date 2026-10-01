@@ -1,0 +1,16 @@
+{
+  "name": "ertes-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ERTES marketing website (static multi-page site)",
+  "scripts": {
+    "dev": "vite --open",
+    "start": "vite --open",
+    "sync": "node scripts/sync-layout.mjs",
+    "build": "node scripts/sync-layout.mjs && node scripts/build.mjs",
+    "preview": "vite preview --outDir dist --open"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

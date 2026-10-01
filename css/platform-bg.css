@@ -1,0 +1,75 @@
+/* ERTES — Platform page: same living background + pointer interaction as the Homepage.
+   Loaded AFTER pages.css / site.css. Layers (created by js/platform-bg.js):
+   #fx ambient glow + grid, #gr film grain, #gn interactive particle network,
+   #cur/#cdot custom cursor, #hud read-out. Colour tokens are the Homepage dark/futuristic ones. */
+
+:root { --bgd: #030913; --bgb: #2cc4f5; --bga: #8fdcff; --soft: #9fb7c6; --cy: rgba(44,196,245,.22); color-scheme: dark; }
+body.ph { background: var(--bgd); color: #e6f3fb; }
+/* the old static glow + grid is replaced by the live #fx layer */
+body.ph:before { display: none; }
+
+/* ---------- ambient layers (identical to Homepage) ---------- */
+#fx { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+#fx:before {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(44,196,245,.06) 1px, #0000 1px), linear-gradient(90deg, rgba(44,196,245,.06) 1px, #0000 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000, #0000 75%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000, #0000 75%);
+}
+#fx i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .45; animation: bgfl 24s ease-in-out infinite alternate; }
+#fx i:nth-child(1) { width: 46vw; height: 46vw; left: -12vw; top: -10vw; background: #0e5f8c; }
+#fx i:nth-child(2) { width: 38vw; height: 38vw; right: -10vw; top: 30vh; background: #4b2c9a; animation-delay: -8s; }
+#fx i:nth-child(3) { width: 34vw; height: 34vw; left: 30vw; bottom: -14vw; background: #0b7a8f; animation-delay: -15s; }
+@keyframes bgfl { to { transform: translate(8vw, 6vh) scale(1.25); } }
+#gr {
+  position: fixed; inset: 0; z-index: 4; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+#gr:after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,.5) 0 1px, #0000 1px 3px); opacity: .25; }
+
+/* interactive particle network (fixed, never blocks clicks) */
+#gn { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+
+/* custom cursor + HUD (cursor above the mobile menu, which is z-index 45) */
+#cur { position: fixed; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1px solid var(--bgb); border-radius: 50%; z-index: 200; pointer-events: none; box-shadow: 0 0 14px rgba(44,196,245,.5); transition: width .25s, height .25s, margin .25s, background .25s; }
+#cur.h { width: 60px; height: 60px; margin: -30px 0 0 -30px; background: rgba(44,196,245,.12); }
+#cdot { position: fixed; left: 0; top: 0; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--bgb); z-index: 201; pointer-events: none; box-shadow: 0 0 10px var(--bgb); }
+#hud { position: fixed; right: 18px; bottom: 14px; z-index: 40; font: 500 10px/1.6 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .16em; color: var(--bga); opacity: .7; pointer-events: none; text-transform: uppercase; }
+#hud b { color: #3dff9a; animation: bgbk 1.4s infinite; }
+@keyframes bgbk { 50% { opacity: 0; } }
+@media (pointer: coarse), (max-width: 700px) { #cur, #cdot, #hud { display: none; } }
+
+/* ---------- re-light the page content for the live background ---------- */
+/* nav: Homepage style (soft scrim, glowing pill) */
+nav:before { content: ""; position: absolute; inset: 0 0 -24px; z-index: -1; pointer-events: none; background: linear-gradient(rgba(3,9,19,.7), rgba(3,9,19,0)); }
+nav.s:before { opacity: 0; }
+.bt { background: linear-gradient(90deg, var(--bgb), #7c8cff); color: #031018; }
+.bt.o { background: none; color: var(--bgb); border-color: var(--bgb); }
+nav .bt.o:hover { color: var(--bga); }
+.bt.g { background: none; }
+
+/* hero */
+.hero h1 { text-shadow: 0 0 40px rgba(44,196,245,.25); }
+.lead, .tag { color: var(--bga); }
+.badge { border-color: rgba(44,196,245,.45); }
+
+/* cards: translucent glass so the network shows through */
+.card { background: rgba(5,16,30,.55); border-color: var(--cy); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.card:hover { border-color: rgba(44,196,245,.65); box-shadow: 0 0 30px rgba(44,196,245,.18); }
+.card small { color: var(--bga); }
+.card p { color: var(--soft); opacity: 1; }
+.card .go { color: #e6f3fb; }
+.card:hover .go { color: var(--bgb); text-shadow: 0 0 12px var(--bgb); }
+
+/* footer: see-through so the glow runs under it */
+footer { background: rgba(3,9,19,.55); border-top-color: var(--cy); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+footer input { background: rgba(44,196,245,.04); border-color: var(--cy); }
+footer input:focus { border-color: var(--bgb); box-shadow: 0 0 18px rgba(44,196,245,.2); outline: none; }
+.fb { border-top-color: var(--cy); }
+
+/* mobile menu overlay */
+#mnav { background: rgba(3,9,19,.97); }
+#mnav a:hover, #mnav a.cur { color: var(--bgb); }
+
+@media (prefers-reduced-motion: reduce) { #fx i, #hud b { animation: none; } }

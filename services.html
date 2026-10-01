@@ -1,0 +1,819 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Services — ERTES</title><meta name="description" content="From first architecture workshop to 24/7 operations, ERTES designs, builds and supports the technology your business runs on.">
+<meta name="theme-color" content="#071D2B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%8C%90%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>/* ERTES — inner placeholder pages (services, solutions, platform, work, contact…).
+   Matches the dark homepage theme. The homepage and About page use their own styles. */
+:root{--b:#23658B;--d:#071D2B;--a:#9CCDE8;--w:#F4F7F9;--c:#2CC4F5}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--d);color:var(--w);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(60vw 50vh at 18% 8%,rgba(44,196,245,.16),transparent 70%),
+    radial-gradient(50vw 50vh at 88% 28%,rgba(124,140,255,.14),transparent 70%),
+    linear-gradient(rgba(44,196,245,.05) 1px,transparent 1px) 0 0/56px 56px,
+    linear-gradient(90deg,rgba(44,196,245,.05) 1px,transparent 1px) 0 0/56px 56px}
+main,footer{position:relative;z-index:1}
+h1,h2,h3,nav,.bt{font-family:"Plus Jakarta Sans",system-ui,sans-serif}
+h1,h2,h3{margin:0}
+
+/* nav */
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;transition:.4s}
+nav.s{background:rgba(3,9,19,.62);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid rgba(44,196,245,.2)}
+nav div{max-width:1200px;margin:auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
+nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0;font-size:14px}
+nav a{color:var(--w);text-decoration:none}
+nav a:hover{color:var(--a);text-shadow:0 0 12px var(--b)}
+nav li a{position:relative}
+nav li a.cur:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:currentColor}
+.lgo{display:flex;align-items:center;gap:8px;color:var(--w)}
+.lgo svg:first-child{height:26px;width:30px}
+.lgo svg:last-child{height:14px;width:104px}
+
+/* buttons */
+.bt{display:inline-block;padding:12px 22px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:.3s;border:1px solid transparent;cursor:pointer;color:#031018;background:linear-gradient(90deg,var(--b),#7c8cff);box-shadow:0 0 22px rgba(44,196,245,.35)}
+.bt:hover{transform:translateY(-2px);box-shadow:0 0 38px rgba(44,196,245,.75)}
+.bt.o{background:none;color:var(--b);border-color:var(--b);box-shadow:none}
+nav .bt.o:hover{color:var(--a);text-shadow:none}
+.bt.g{background:none;color:var(--a);border-color:rgba(156,205,232,.45);box-shadow:none}
+
+/* page hero */
+.wrap{max-width:1150px;margin:auto}
+.hero{padding:170px 24px 40px}
+.tag{font-size:12px;letter-spacing:.25em;color:var(--a);font-weight:600}
+.hero h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.05;margin:16px 0 18px;letter-spacing:-.01em}
+.lead{max-width:640px;margin:0;color:var(--a);line-height:1.7;font-size:1.05rem}
+.badge{display:inline-block;margin-top:26px;padding:6px 12px;border:1px dashed rgba(156,205,232,.5);border-radius:999px;font-size:12px;letter-spacing:.08em;color:var(--a)}
+.acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+/* cards */
+.sec{padding:20px 24px 100px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.card{display:block;color:inherit;text-decoration:none;border:1px solid rgba(44,196,245,.2);background:rgba(6,20,34,.7);border-radius:14px;padding:26px;transition:.3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(44,196,245,.6);box-shadow:0 0 30px rgba(44,196,245,.15)}
+.card small{display:block;font-size:11px;letter-spacing:.2em;color:var(--a);text-transform:uppercase}
+.card h3{font-size:1.1rem;line-height:1.3;margin:10px 0 8px}
+.card p{margin:0;color:var(--a);line-height:1.6;font-size:.92rem;opacity:.85}
+.card .go{display:inline-block;margin-top:16px;font-size:13px;font-weight:600;color:var(--w)}
+
+/* contact form */
+.form{display:grid;gap:16px;max-width:640px}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.form .row{grid-template-columns:1fr}}
+.form label{display:grid;gap:6px;font-size:13px;color:var(--a)}
+.form input,.form select,.form textarea{width:100%;background:#061422;border:1px solid var(--b);border-radius:8px;padding:12px;color:var(--w);font:inherit;font-size:15px}
+.form textarea{min-height:140px;resize:vertical}
+.form [aria-invalid=true]{border-color:#ff9b9b}
+.form button{justify-self:start;font-family:inherit;border:1px solid transparent}
+.form button:disabled{opacity:.6;cursor:wait}
+.form-status{margin:0;min-height:1.4em;font-size:14px;color:var(--a)}
+.form-status.ok{color:#7be7a5}
+.form-status.err{color:#ff9b9b}
+.side{margin-top:40px;color:var(--a);line-height:1.8;font-size:14px}
+.side a{color:var(--w)}
+
+/* legal */
+.prose{max-width:760px;line-height:1.8;color:var(--a)}
+.prose h2{color:var(--w);font-size:1.25rem;margin:34px 0 8px}
+.prose p{margin:0 0 12px}
+
+/* footer */
+footer{margin-top:auto;background:rgba(3,9,19,.85);border-top:1px solid rgba(44,196,245,.2);color:var(--a);padding:60px 24px 30px;font-size:14px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 2fr;gap:36px}
+@media(max-width:800px){.fg{grid-template-columns:1fr}}
+footer a{display:block;color:var(--a);text-decoration:none;margin-top:8px}
+footer a:hover{color:var(--w)}
+footer .lgo{margin:0}
+footer b{color:var(--w)}
+footer input{background:#061422;border:1px solid var(--b);border-radius:8px;padding:11px;color:var(--w);width:min(280px,100%);font-family:Inter,system-ui,sans-serif}
+.fb{margin-top:40px;padding-top:20px;border-top:1px solid rgba(44,196,245,.25);font-size:12px}
+</style><style>/* ERTES — shared bits used by every page (nav menu, footer links, newsletter) */
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #2CC4F5;outline-offset:3px}
+
+/* ---------- mobile menu (built by js/site.js) ---------- */
+.mbtn{display:none;position:relative;flex:0 0 auto;width:42px;height:42px;padding:0;border:0;background:none;color:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mbtn span{position:absolute;left:10px;right:10px;height:2px;background:currentColor;border-radius:2px;transition:.3s}
+.mbtn span:nth-child(1){top:16px}
+.mbtn span:nth-child(2){top:24px}
+.mbtn.open span:nth-child(1){top:20px;transform:rotate(45deg)}
+.mbtn.open span:nth-child(2){top:20px;transform:rotate(-45deg)}
+
+#mnav{position:fixed;inset:0;z-index:45;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:90px 8vw 40px;overflow-y:auto;background:rgba(3,9,19,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+#mnav.open{opacity:1;visibility:visible}
+#mnav a{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:clamp(1.6rem,7vw,2.2rem);font-weight:700;line-height:1.2;color:#F4F7F9;text-decoration:none;padding:8px 0;opacity:0;transform:translateY(14px);transition:opacity .4s,transform .4s,color .2s}
+#mnav.open a{opacity:1;transform:none;transition-delay:calc(var(--i,0)*45ms + 80ms)}
+#mnav a:hover,#mnav a.cur{color:#9CCDE8}
+#mnav a.mcta{align-self:flex-start;margin-top:22px;padding:12px 22px;border:1px solid #9CCDE8;border-radius:8px;font-size:1rem;font-weight:600}
+
+@media(max-width:1000px){
+  nav ul{display:none!important}
+  .mbtn{display:block}
+  nav > div > a:not(.lgo){margin-left:auto}
+}
+@media(max-width:560px){
+  nav > div > a:not(.lgo){display:none}
+  .mbtn{margin-left:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  #mnav,#mnav a,.mbtn span{transition:none!important}
+}
+
+/* ---------- footer: legal links + newsletter message ---------- */
+.fb a,.fb2 a{display:inline!important;margin:0!important;color:inherit!important;text-decoration:underline;text-underline-offset:3px}
+.fb a:hover,.fb2 a:hover{opacity:.75}
+.nl-msg{flex-basis:100%;margin:6px 0 0;font-size:12px;line-height:1.4;min-height:1em}
+.nl-msg.ok{color:#7be7a5}
+.nl-msg.err{color:#ff9b9b}
+</style><style>/* ERTES — Services page (scroll-driven layout). Loaded after pages.css + site.css */
+:root{--n:#071D2B;--l:#F4F7F9;--ink:#0B1F2C;--c:#2CC4F5;--m:#23658B;--a:#9CCDE8;--ease:cubic-bezier(.22,.8,.2,1)}
+html{overflow-x:clip;scroll-behavior:auto}
+body.sv{display:block;overflow:visible;background:var(--l);color:var(--ink)}
+body.sv:before{display:none}
+.sv h1,.sv h2,.sv h3,.sv h4{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:400;letter-spacing:-.03em}
+.sv main{width:100%}
+
+/* loader */
+#ld{position:fixed;inset:0;z-index:100;background:var(--l);color:var(--n);display:none;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:transform .9s var(--ease)}
+.js #ld{display:flex}#ld.gone{transform:translateY(-100%)}
+#ld svg{width:88px;animation:pulse 1.2s ease-in-out infinite alternate}
+#ld p{margin:0;font-size:11px;letter-spacing:.35em;text-transform:uppercase}
+@keyframes pulse{to{opacity:.35;transform:scale(.94)}}
+
+/* nav theming (set by JS per element: data-on=light|dark) */
+[data-on=light]{color:var(--ink)!important;transition:color .3s}
+[data-on=light] .lgo,.lgo[data-on=light],nav a[data-on=light]{color:var(--ink)!important}
+nav .bt.o[data-on=light]{border-color:var(--ink);color:var(--ink)}
+nav .bt.o[data-on=dark]{border-color:var(--a);color:var(--w)}
+.mbtn[data-on=light]{color:var(--ink)}
+
+/* hero (pinned, two phases) */
+.hero{position:relative;height:230vh;background:var(--n)}
+.hin{position:sticky;top:0;height:100vh;min-height:560px;overflow:hidden;background:radial-gradient(70vw 60vh at 50% 45%,#0c2a3d,var(--n) 70%)}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hc{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;padding:0 24px;color:var(--w);pointer-events:none}
+.stm{opacity:0;pointer-events:auto}
+.tg{font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--a);margin:0 0 18px;font-weight:600}
+.hc h1{font-size:clamp(2.6rem,9vw,7.5rem);line-height:1;color:var(--w)}
+.hc h1 .w{display:inline-block;white-space:nowrap}.hc h1 .w span{display:inline-block;filter:blur(14px);opacity:0;transition:filter 1s var(--ease),opacity 1s var(--ease)}
+.hc h1.in .w span{filter:none;opacity:1}
+.stm h2{max-width:900px;margin:0 auto;font-size:clamp(2rem,5vw,4rem);line-height:1.08;color:var(--w)}
+.acts2{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+.lk{display:inline-flex;gap:10px;align-items:center;color:inherit;text-decoration:none;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding-bottom:6px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:background-size .5s var(--ease)}
+.lk:hover{background-size:0 1px;background-position:100% 100%}.lk i{font-style:normal;transition:transform .3s}.lk:hover i{transform:translateX(5px)}
+.stm .lk{color:var(--w)}
+.hl{position:absolute;left:0;right:0;bottom:34px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;padding:0 24px;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.hl a{color:var(--a);opacity:.6;text-decoration:none;transition:opacity .3s}.hl a:hover{opacity:1}
+
+/* sticky split panels */
+.stack{position:relative;background:#04121b}
+.svc{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;transform-origin:50% 30%;backface-visibility:hidden}
+.dim{position:absolute;inset:0;background:#031018;opacity:0;pointer-events:none;z-index:5}
+.vis{position:relative;overflow:visible;background:linear-gradient(160deg,#0c2a3d,var(--n));color:var(--w);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;padding:90px 6vw 60px}
+.cap{margin:0;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:center;line-height:1.7;color:var(--a)}
+.scene{width:min(440px,100%);perspective:1200px;perspective-origin:50% 40%}
+.c3{position:relative;transform-style:preserve-3d;will-change:transform,opacity}
+.js .c3{opacity:0}
+.sh{position:absolute;inset:8% 6% -6%;border-radius:22px;background:radial-gradient(closest-side,rgba(44,196,245,.3),rgba(44,196,245,.08) 55%,transparent 78%);transform:translateZ(-90px);pointer-events:none}
+.card{position:relative;transform-style:preserve-3d;padding:18px;border-radius:16px;background:linear-gradient(145deg,rgba(244,247,249,.11),rgba(244,247,249,.03));border:1px solid rgba(156,205,232,.3);box-shadow:0 40px 90px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.14)}
+.card svg{display:block;width:100%;height:auto;fill:none;stroke-width:1.5}
+.card .ly1{transform:translateZ(26px)}
+.card .ly2{position:absolute;left:18px;top:18px;width:calc(100% - 36px);transform:translateZ(74px);filter:drop-shadow(0 0 8px rgba(44,196,245,.4))}
+.ly1 .a,.ly1 .a2,.ly1 .l2{visibility:hidden}
+.ly2 .s,.ly2 .l{visibility:hidden}
+.card .s{stroke:var(--a);fill:rgba(156,205,232,.07)}.card .a{stroke:var(--c);fill:rgba(44,196,245,.3)}.card .l{stroke:rgba(156,205,232,.55)}.card .l2{fill:var(--a);stroke:none}.card .a2{stroke:var(--c);stroke-width:2.5}
+.gl{position:absolute;inset:0;border-radius:inherit;pointer-events:none;overflow:hidden;transform:translateZ(1px)}
+.gl u{position:absolute;left:-30%;top:-30%;width:160%;height:160%;background:radial-gradient(closest-side,rgba(255,255,255,.17),rgba(255,255,255,.05) 55%,transparent 80%);will-change:transform}
+.chip{position:absolute;pointer-events:none;transform:translateZ(118px)}
+.chip b{display:flex;align-items:center;gap:8px;font:500 11px/1 Inter,sans-serif;letter-spacing:.04em;color:var(--w);white-space:nowrap;padding:9px 13px;border-radius:999px;background:rgba(9,36,53,.94);border:1px solid rgba(156,205,232,.4);box-shadow:0 14px 30px rgba(0,0,0,.4);animation:flt 5s ease-in-out infinite}
+.chip i{width:6px;height:6px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
+.chip.c1{top:-16px;right:-26px}.chip.c2{bottom:-18px;left:-26px;transform:translateZ(96px)}.chip.c2 b{animation-delay:-2.4s}
+@keyframes flt{50%{transform:translateY(-7px)}}
+.no{position:absolute;left:5vw;bottom:34px;font-size:12px;letter-spacing:.2em;color:var(--a);opacity:.7}
+.txt{background:var(--l);display:flex;align-items:center;padding:90px 6vw 60px}
+.ti{max-width:460px}
+.ti h2{font-size:clamp(1.9rem,3vw,2.7rem);line-height:1.08;margin-bottom:16px}
+.ti p{margin:0 0 44px;line-height:1.6;color:#41576a;font-size:15px}
+.ti h3{font-family:Inter,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--m);font-weight:500;margin-bottom:12px}
+.caps{list-style:none;margin:0 0 34px;padding:0;max-width:360px}
+.caps li{position:relative;padding:10px 0;font-size:15px;color:var(--ink);opacity:0;transform:translateX(-14px);transition:opacity .8s var(--ease) var(--d,0ms),transform .8s var(--ease) var(--d,0ms)}
+.ti.in .caps li,html:not(.js) .caps li{opacity:1;transform:none}
+.caps li:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease) var(--d,0ms)}
+.ti.in .caps li:after,html:not(.js) .caps li:after{transform:none}
+.lk.dk{color:var(--ink)}
+@media(min-width:901px) and (min-height:600px){.svc{position:sticky;top:0;height:100vh;overflow:hidden;border-radius:0;transition:border-radius .35s ease;box-shadow:0 -30px 70px rgba(0,0,0,.45)}.svc.rd{border-radius:30px 30px 0 0}.svc:not(:last-child){margin-bottom:25vh}}
+
+.wrap2{max-width:1250px;margin:auto;padding:0 24px}
+.sub{margin:26px 0 90px 24%;font-size:11px;letter-spacing:.18em;text-transform:uppercase;line-height:1.8;color:#41576a}
+/* process (pinned; steps reveal one by one as you scroll) */
+.proc{background:#e8eef2;height:340vh;position:relative}
+.pin{position:sticky;top:0;height:100vh;min-height:600px;display:flex;align-items:center;overflow:hidden}
+.pin .wrap2{width:100%}
+.ey{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--m);margin-bottom:8px}
+.proc h2{font-size:clamp(3rem,7vw,5.5rem);line-height:1;margin-left:9%}
+.proc .sub{margin:16px 0 70px 9%}
+.pg{position:relative;display:grid;grid-template-columns:repeat(4,1fr);margin-left:9%}
+.pg:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:rgba(11,31,44,.2)}
+.pf{position:absolute;left:0;right:0;top:0;height:2px;margin-top:-.5px;background:linear-gradient(90deg,var(--m),var(--c));transform:scaleX(0);transform-origin:left;box-shadow:0 0 14px rgba(44,196,245,.6);will-change:transform}
+.ps{position:relative;padding:44px 30px 10px 0;will-change:transform,opacity}
+.js .ps{opacity:0;transform:translate3d(0,46px,0)}
+html:not(.js) .js .ps{opacity:1;transform:none}
+.ps small{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--m)}
+.ps h3{font-size:1.5rem;margin:26px 0 14px}.ps p{margin:0;font-size:13px;line-height:1.65;color:#41576a;max-width:230px}
+.pl{position:absolute;top:-11px;left:0;width:22px;height:22px;display:grid;place-items:center;border-radius:50%;font-style:normal;font-size:16px;line-height:1;background:var(--ink);color:#fff;transform:scale(.5);box-shadow:0 0 0 0 rgba(44,196,245,.2);transition:box-shadow .5s var(--ease),background .4s}
+.pl.on{box-shadow:0 0 0 7px rgba(44,196,245,.2);background:var(--n)}
+
+/* CTA */
+.cta{background:var(--n);color:var(--w);padding:170px 0 60px;position:relative;overflow:hidden}
+.cta:before{content:"";position:absolute;inset:0;background:radial-gradient(50vw 40vh at 20% 90%,rgba(44,196,245,.14),transparent 70%)}
+.cta .wrap2{position:relative}
+.cta h2{font-size:clamp(3rem,8vw,7rem);line-height:1;margin:0 0 110px}
+.cr{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;color:var(--a);border-top:1px solid rgba(156,205,232,.25);padding-top:26px}
+.clk{font-size:11px;letter-spacing:.16em;text-transform:uppercase}.clk b{font-weight:500;color:var(--w)}
+.cr .acts2{margin:0}.cr .lk{color:var(--w)}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease) var(--d,0ms),transform 1s var(--ease) var(--d,0ms)}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+ .hero{height:200vh}
+ .svc{grid-template-columns:1fr;min-height:0}.vis{padding:110px 24px 50px}.txt{padding:50px 24px 70px}.no{display:none}
+ .sub{margin-left:0}
+ .proc{height:auto;padding:100px 0 110px}.pin{position:static;height:auto;min-height:0;display:block;overflow:visible}
+ .proc h2,.proc .sub{margin-left:0}.proc .sub{margin-bottom:50px}
+ .pg{grid-template-columns:1fr;margin-left:0;padding-left:34px}
+ .pg:before{left:10px;right:auto;top:0;bottom:0;width:1px;height:auto}
+ .pf{left:10px;right:auto;top:0;bottom:0;width:2px;height:auto;margin:0 0 0 -.5px;transform:scaleY(0);transform-origin:top;background:linear-gradient(180deg,var(--m),var(--c))}
+ .ps{padding:0 0 46px}.ps:last-child{padding-bottom:0}
+ .pl{top:0;left:-34px}
+}
+@media(max-width:900px){.chip.c1{right:-6px}.chip.c2{left:-6px}}
+@media(prefers-reduced-motion:reduce){.js .rv,.hc h1 .w span{transition:none!important;opacity:1;transform:none;filter:none}.caps li:after{transition:none;transform:none}#ld,#ld svg{transition:none;animation:none}.chip b{animation:none}.js .c3{opacity:1}.js .ps{opacity:1;transform:none}.caps li{opacity:1;transform:none;transition:none}}
+.sv footer{background:#050f18;border-top:1px solid rgba(44,196,245,.15)}
+
+.sv nav.s{-webkit-backdrop-filter:none;backdrop-filter:none;background:transparent;border-bottom-color:transparent}
+
+</style>
+<link rel="stylesheet" href="css/services-bg.css"><link rel="stylesheet" href="css/layout.css"><script>document.documentElement.className+=' js'</script></head>
+<body class="sv"><svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="ic" viewBox="0 0 146 127.19"><g fill="currentColor"><path d="M 24.773438 99.6875 C 28.070312 102.703125 31.746094 103.214844 35.980469 103.101562 L 143.3125 103.523438 L 142.59375 126.386719 L 24.691406 125.804688 C 18.554688 125.34375 12.996094 124.769531 8.613281 120.734375 C 1.121094 113.828125 0.214844 104.363281 0.507812 93.878906 L 1.082031 73.070312 L 22.039062 72.421875 L 21.535156 89.703125 C 21.441406 93.050781 22.214844 97.347656 24.777344 99.6875 Z"/><path d="M 110.902344 0.738281 L 145.535156 0.890625 L 145.152344 22.296875 L 36.621094 22.210938 C 28.738281 22.519531 23.308594 27.863281 22.890625 35.464844 L 22.441406 56.910156 L 1.410156 57.570312 L 1.964844 30.378906 C 2.253906 16.363281 8.339844 4.226562 22.453125 1.46875 C 28.929688 0.203125 35.160156 0.261719 41.917969 0 Z"/><path d="M 121.375 76.304688 L 121.054688 89.234375 C 120.996094 91.488281 119.050781 92.984375 116.734375 93.050781 L 39.492188 90.996094 C 37.667969 91.050781 36.277344 89.589844 36.3125 87.910156 L 36.585938 75.226562 C 36.625 73.515625 38.230469 71.976562 40.097656 71.917969 L 118.710938 73.71875 C 119.59375 73.6875 121.394531 75.398438 121.371094 76.308594 Z"/><path d="M 122.257812 41.644531 L 122.0625 54.296875 C 122.035156 56.089844 120.5 57.976562 118.359375 58.046875 L 40.742188 56.355469 C 38.953125 56.417969 37.175781 55.230469 37.21875 53.472656 L 37.542969 40.742188 C 37.582031 39.21875 38.777344 37.882812 40.457031 37.429688 L 119.628906 38.902344 C 120.699219 38.863281 122.273438 40.726562 122.257812 41.644531 Z"/></g></symbol>
+<symbol id="wd" viewBox="0 0 171 25.42"><g fill="currentColor"><path d="M 7.042969 5.328125 L 6.882812 13.941406 L 6.84375 18.265625 C 6.96875 19.230469 7.578125 19.792969 8.609375 19.757812 L 27.628906 19.75 L 27.734375 24.507812 L 5.730469 24.371094 L 1.875 20.28125 L 2.113281 7.390625 L 2.199219 2.921875 C 2.21875 1.921875 2.886719 0.964844 3.933594 0.898438 L 6.820312 0.910156 L 27.734375 0.910156 L 27.71875 5.300781 Z M 24.796875 10.054688 L 24.738281 14.5 L 9.363281 14.550781 L 9.417969 10.09375 Z"/><path d="M 54.675781 17.925781 L 56.234375 19.128906 L 58.136719 20.605469 L 62.753906 24.445312 L 54.386719 24.417969 L 49.117188 20.320312 L 42.871094 15.402344 C 42.066406 14.925781 41.957031 14.925781 40.703125 14.683594 L 40.078125 14.625 C 39.90625 14.605469 39.953125 14.058594 39.949219 13.859375 L 39.871094 9.9375 L 49.636719 9.53125 L 52.679688 9.335938 C 53.300781 9.296875 54.117188 8.867188 54.113281 8.132812 L 54.089844 5.664062 C 53.75 4.710938 53.035156 4.566406 52.019531 4.617188 L 37.199219 4.703125 L 37.296875 20.535156 L 37.359375 24.511719 L 32.054688 24.511719 L 32.003906 21.78125 L 31.976562 20.074219 L 31.957031 11.03125 L 31.949219 8.152344 L 31.96875 2.78125 C 31.976562 1.359375 32.785156 0.304688 34.230469 0.226562 L 50.203125 0.238281 L 53.679688 0.238281 C 55.539062 0.226562 57.902344 0.570312 58.628906 2.292969 L 59.09375 3.394531 C 59.757812 5.714844 59.664062 6.632812 59.59375 8.902344 C 59.457031 13.34375 54.675781 13.933594 50.753906 14.230469 C 50.605469 14.242188 50.28125 14.40625 50.1875 14.476562 L 51.464844 15.433594 L 54.679688 17.921875 Z"/><path d="M 81.699219 5.3125 L 81.710938 8.523438 L 81.738281 18.335938 L 81.785156 22.21875 L 81.863281 24.285156 L 76.089844 24.285156 L 76.097656 21.734375 L 76.117188 5.3125 L 64.800781 5.3125 L 64.835938 0.921875 L 85.097656 0.921875 L 87.074219 0.890625 L 91.109375 0.921875 L 92.488281 0.921875 L 92.566406 5.3125 Z"/><path d="M 102.507812 5.328125 L 102.347656 13.941406 L 102.308594 18.265625 C 102.4375 19.230469 103.042969 19.792969 104.074219 19.757812 L 123.09375 19.75 L 123.199219 24.507812 L 101.199219 24.371094 L 97.34375 20.28125 L 97.578125 7.390625 L 97.664062 2.921875 C 97.683594 1.921875 98.351562 0.964844 99.398438 0.898438 L 102.289062 0.910156 L 123.203125 0.910156 L 123.183594 5.300781 Z M 120.261719 10.054688 L 120.207031 14.5 L 104.828125 14.550781 L 104.882812 10.09375 Z"/><path d="M 155.441406 21.960938 C 153.886719 24.660156 149.175781 24.617188 145.796875 24.441406 L 127.839844 24.304688 L 127.851562 19.433594 L 148.648438 19.527344 C 149.328125 19.566406 149.988281 19.160156 150.371094 18.757812 C 150.84375 18.265625 150.769531 17.507812 150.75 16.789062 C 150.664062 14.175781 147.980469 14.441406 144.941406 14.289062 L 136.328125 14.277344 C 132.550781 14.089844 128.585938 13.972656 127.898438 9.980469 C 127.59375 8.238281 127.589844 6.421875 127.785156 4.640625 C 127.972656 2.945312 128.761719 1.324219 130.339844 0.644531 C 131.300781 0.226562 132.378906 -0.046875 133.464844 0.0078125 L 155.113281 0.148438 L 155.296875 4.816406 L 135.449219 4.761719 C 134.816406 4.730469 133.835938 5.015625 133.613281 5.527344 C 133.132812 6.621094 133.128906 8.007812 133.835938 8.980469 C 134.222656 9.511719 135.210938 9.742188 135.898438 9.777344 L 148.816406 9.769531 C 150.34375 9.847656 151.785156 10.175781 153.097656 10.839844 C 155.710938 12.160156 156.417969 13.980469 156.433594 16.835938 C 156.441406 18.589844 156.347656 20.386719 155.445312 21.960938 Z"/></g></symbol>
+</defs></svg>
+<div id="ld" aria-hidden="true"><svg viewBox="0 0 146 127.19"><use href="#ic" width="146" height="127.19"/></svg><p>Design · Build · Scale</p></div>
+<!-- layout:header --><nav id="nav"><div><a class="lgo" href="index.html" aria-label="ERTES home"><svg viewBox="0 0 146 127.19"><use href="#ic" width="146" height="127.19"/></svg><svg viewBox="0 0 171 25.42"><use href="#wd" width="171" height="25.42"/><circle cx="166.14" cy="21.83" r="2.92" fill="currentColor"/></svg></a><ul><li><a href="services.html" class="cur" aria-current="page">Services</a></li><li><a href="solutions.html">Solutions</a></li><li><a href="platform.html">Platform</a></li><li><a href="work.html">Work</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul><a class="bt o" href="contact.html">Build with Us ↗</a></div></nav><!-- /layout:header -->
+<main>
+<section class="hero" id="top"><div class="hin" data-bg="dark"><canvas id="cv" aria-hidden="true"></canvas>
+<div class="hc h1w"><div class="tg">✦ What we do</div><h1 id="hh">Our expertise</h1></div>
+<div class="hc stm"><h2>Six disciplines. One accountable team, from first workshop to 24/7 operations.</h2><div class="acts2"><a class="lk" href="work.html">View our work <i>→</i></a><a class="lk" href="contact.html?topic=Services">Let’s connect <i>→</i></a></div></div>
+<div class="hl" role="navigation" aria-label="Services"><a href="#svc-1">Consulting &amp; Architecture</a><a href="#svc-2">Product Design &amp; UX</a><a href="#svc-3">Websites</a><a href="#svc-4">Cloud Native</a><a href="#svc-5">Enterprise Platforms</a><a href="#svc-6">Integration &amp; Automation</a></div></div></section>
+<div class="stack"><section class="svc" id="svc-1" style="z-index:1"><div class="vis" data-bg="dark"><p class="cap rv">Shaped with your team,<br>before a line of code.</p><div class="scene"><div class="c3"><div class="sh"></div><div class="card"><svg class="ly1" viewBox="0 0 300 190" role="img" aria-label="Technology Consulting &amp; Solution Architecture illustration"><rect class="s" x="20" y="20" width="80" height="34" rx="6"/><rect class="s" x="110" y="20" width="80" height="34" rx="6"/><rect class="a" x="200" y="20" width="80" height="34" rx="6"/><path class="l" d="M60 54v28M150 54v28M240 54v28M60 82h180M150 82v22"/><rect class="s" x="20" y="104" width="120" height="34" rx="6"/><rect class="s" x="160" y="104" width="120" height="34" rx="6"/><path class="l" d="M80 138v20M220 138v20M80 158h140"/><circle class="a" cx="150" cy="166" r="7"/></svg><svg class="ly2" viewBox="0 0 300 190" aria-hidden="true"><rect class="s" x="20" y="20" width="80" height="34" rx="6"/><rect class="s" x="110" y="20" width="80" height="34" rx="6"/><rect class="a" x="200" y="20" width="80" height="34" rx="6"/><path class="l" d="M60 54v28M150 54v28M240 54v28M60 82h180M150 82v22"/><rect class="s" x="20" y="104" width="120" height="34" rx="6"/><rect class="s" x="160" y="104" width="120" height="34" rx="6"/><path class="l" d="M80 138v20M220 138v20M80 158h140"/><circle class="a" cx="150" cy="166" r="7"/></svg><i class="gl"><u></u></i><span class="chip c1"><b><i></i>Enterprise architecture</b></span><span class="chip c2"><b><i></i>Security &amp; compliance review</b></span></div></div></div><span class="no">01</span></div><div class="txt" data-bg="light"><div class="ti rv"><h2>Technology Consulting &amp; Solution Architecture</h2><p>We align your technology landscape with business goals through scalable, future-proof architecture and clear roadmaps.</p><h3>Our core capabilities</h3><ul class="caps"><li style="--d:0ms">Enterprise architecture</li><li style="--d:70ms">Technology roadmaps</li><li style="--d:140ms">Cloud &amp; migration strategy</li><li style="--d:210ms">Security &amp; compliance review</li><li style="--d:280ms">Vendor &amp; platform selection</li><li style="--d:350ms">Modernisation planning</li></ul><a class="lk dk" href="contact.html?topic=Services">Discuss this service <i>→</i></a></div></div></section><section class="svc" id="svc-2" style="z-index:2"><div class="vis" data-bg="dark"><p class="cap rv">Closely shaped alongside<br>strategy and engineering.</p><div class="scene"><div class="c3"><div class="sh"></div><div class="card"><svg class="ly1" viewBox="0 0 300 190" role="img" aria-label="Product Design &amp; User Experience illustration"><rect class="s" x="16" y="16" width="62" height="158" rx="6"/><rect class="a" x="24" y="26" width="46" height="10" rx="3"/><path class="l" d="M24 52h46M24 66h36M24 80h42"/><rect class="s" x="88" y="16" width="196" height="30" rx="6"/><rect class="s" x="88" y="56" width="94" height="52" rx="6"/><rect class="s" x="190" y="56" width="94" height="52" rx="6"/><rect class="s" x="88" y="118" width="196" height="56" rx="6"/><path class="l" d="M98 132h100M98 146h150M98 160h70"/></svg><svg class="ly2" viewBox="0 0 300 190" aria-hidden="true"><rect class="s" x="16" y="16" width="62" height="158" rx="6"/><rect class="a" x="24" y="26" width="46" height="10" rx="3"/><path class="l" d="M24 52h46M24 66h36M24 80h42"/><rect class="s" x="88" y="16" width="196" height="30" rx="6"/><rect class="s" x="88" y="56" width="94" height="52" rx="6"/><rect class="s" x="190" y="56" width="94" height="52" rx="6"/><rect class="s" x="88" y="118" width="196" height="56" rx="6"/><path class="l" d="M98 132h100M98 146h150M98 160h70"/></svg><i class="gl"><u></u></i><span class="chip c1"><b><i></i>Product strategy</b></span><span class="chip c2"><b><i></i>Design systems</b></span></div></div></div><span class="no">02</span></div><div class="txt" data-bg="light"><div class="ti rv"><h2>Product Design &amp; User Experience</h2><p>Research-led product design that turns complex workflows into interfaces people understand on the first try.</p><h3>Our core capabilities</h3><ul class="caps"><li style="--d:0ms">Product strategy</li><li style="--d:70ms">User research</li><li style="--d:140ms">UX architecture</li><li style="--d:210ms">Design systems</li><li style="--d:280ms">Prototyping &amp; validation</li><li style="--d:350ms">Motion &amp; interaction design</li></ul><a class="lk dk" href="contact.html?topic=Services">Discuss this service <i>→</i></a></div></div></section><section class="svc" id="svc-3" style="z-index:3"><div class="vis" data-bg="dark"><p class="cap rv">Built to load fast<br>and rank well.</p><div class="scene"><div class="c3"><div class="sh"></div><div class="card"><svg class="ly1" viewBox="0 0 300 190" role="img" aria-label="Websites &amp; Digital Experiences illustration"><rect class="s" x="14" y="14" width="272" height="164" rx="8"/><path class="l" d="M14 38h272"/><circle class="a" cx="28" cy="26" r="4"/><circle class="l2" cx="42" cy="26" r="4"/><circle class="l2" cx="56" cy="26" r="4"/><rect class="a" x="30" y="56" width="120" height="14" rx="4"/><path class="l" d="M30 84h110M30 98h90"/><rect class="s" x="30" y="116" width="52" height="16" rx="8"/><rect class="s" x="170" y="52" width="100" height="112" rx="6"/><path class="l" d="M170 120l30-26 24 18 20-14 26 22"/></svg><svg class="ly2" viewBox="0 0 300 190" aria-hidden="true"><rect class="s" x="14" y="14" width="272" height="164" rx="8"/><path class="l" d="M14 38h272"/><circle class="a" cx="28" cy="26" r="4"/><circle class="l2" cx="42" cy="26" r="4"/><circle class="l2" cx="56" cy="26" r="4"/><rect class="a" x="30" y="56" width="120" height="14" rx="4"/><path class="l" d="M30 84h110M30 98h90"/><rect class="s" x="30" y="116" width="52" height="16" rx="8"/><rect class="s" x="170" y="52" width="100" height="112" rx="6"/><path class="l" d="M170 120l30-26 24 18 20-14 26 22"/></svg><i class="gl"><u></u></i><span class="chip c1"><b><i></i>High-performance websites</b></span><span class="chip c2"><b><i></i>Accessibility (WCAG)</b></span></div></div></div><span class="no">03</span></div><div class="txt" data-bg="light"><div class="ti rv"><h2>Websites &amp; Digital Experiences</h2><p>Fast, accessible, SEO-ready web platforms built on composable foundations that grow with your content.</p><h3>Our core capabilities</h3><ul class="caps"><li style="--d:0ms">High-performance websites</li><li style="--d:70ms">Headless CMS builds</li><li style="--d:140ms">E-commerce experiences</li><li style="--d:210ms">Accessibility (WCAG)</li><li style="--d:280ms">SEO &amp; Core Web Vitals</li><li style="--d:350ms">Analytics &amp; optimisation</li></ul><a class="lk dk" href="contact.html?topic=Services">Discuss this service <i>→</i></a></div></div></section><section class="svc" id="svc-4" style="z-index:4"><div class="vis" data-bg="dark"><p class="cap rv">Designed to scale<br>and stay up.</p><div class="scene"><div class="c3"><div class="sh"></div><div class="card"><svg class="ly1" viewBox="0 0 300 190" role="img" aria-label="Cloud Native Engineering illustration"><path class="l" d="M150 95L70 50M150 95L230 50M150 95L70 140M150 95L230 140M70 50H30M230 50h40M70 140H30M230 140h40"/><circle class="a" cx="150" cy="95" r="20"/><circle class="s" cx="70" cy="50" r="14"/><circle class="s" cx="230" cy="50" r="14"/><circle class="s" cx="70" cy="140" r="14"/><circle class="s" cx="230" cy="140" r="14"/><circle class="l2" cx="26" cy="50" r="5"/><circle class="l2" cx="274" cy="50" r="5"/><circle class="l2" cx="26" cy="140" r="5"/><circle class="l2" cx="274" cy="140" r="5"/></svg><svg class="ly2" viewBox="0 0 300 190" aria-hidden="true"><path class="l" d="M150 95L70 50M150 95L230 50M150 95L70 140M150 95L230 140M70 50H30M230 50h40M70 140H30M230 140h40"/><circle class="a" cx="150" cy="95" r="20"/><circle class="s" cx="70" cy="50" r="14"/><circle class="s" cx="230" cy="50" r="14"/><circle class="s" cx="70" cy="140" r="14"/><circle class="s" cx="230" cy="140" r="14"/><circle class="l2" cx="26" cy="50" r="5"/><circle class="l2" cx="274" cy="50" r="5"/><circle class="l2" cx="26" cy="140" r="5"/><circle class="l2" cx="274" cy="140" r="5"/></svg><i class="gl"><u></u></i><span class="chip c1"><b><i></i>Containers &amp; Kubernetes</b></span><span class="chip c2"><b><i></i>CI/CD pipelines</b></span></div></div></div><span class="no">04</span></div><div class="txt" data-bg="light"><div class="ti rv"><h2>Cloud Native Engineering</h2><p>Kubernetes, serverless and event-driven systems, with SRE guardrails in place from day one.</p><h3>Our core capabilities</h3><ul class="caps"><li style="--d:0ms">Containers &amp; Kubernetes</li><li style="--d:70ms">Serverless architectures</li><li style="--d:140ms">Event-driven systems</li><li style="--d:210ms">CI/CD pipelines</li><li style="--d:280ms">Observability &amp; SRE</li><li style="--d:350ms">Cost optimisation (FinOps)</li></ul><a class="lk dk" href="contact.html?topic=Services">Discuss this service <i>→</i></a></div></div></section><section class="svc" id="svc-5" style="z-index:5"><div class="vis" data-bg="dark"><p class="cap rv">Core systems,<br>modernised with care.</p><div class="scene"><div class="c3"><div class="sh"></div><div class="card"><svg class="ly1" viewBox="0 0 300 190" role="img" aria-label="Enterprise Applications &amp; Business Platforms illustration"><rect class="s" x="16" y="16" width="268" height="158" rx="8"/><rect class="a" x="30" y="120" width="26" height="40" rx="3"/><rect class="s" x="66" y="96" width="26" height="64" rx="3"/><rect class="s" x="102" y="76" width="26" height="84" rx="3"/><rect class="s" x="138" y="104" width="26" height="56" rx="3"/><path class="l" d="M186 44h84M186 60h60M186 76h72"/><path class="a2" d="M186 140l22-22 20 10 42-38"/></svg><svg class="ly2" viewBox="0 0 300 190" aria-hidden="true"><rect class="s" x="16" y="16" width="268" height="158" rx="8"/><rect class="a" x="30" y="120" width="26" height="40" rx="3"/><rect class="s" x="66" y="96" width="26" height="64" rx="3"/><rect class="s" x="102" y="76" width="26" height="84" rx="3"/><rect class="s" x="138" y="104" width="26" height="56" rx="3"/><path class="l" d="M186 44h84M186 60h60M186 76h72"/><path class="a2" d="M186 140l22-22 20 10 42-38"/></svg><i class="gl"><u></u></i><span class="chip c1"><b><i></i>Custom enterprise apps</b></span><span class="chip c2"><b><i></i>Data platforms &amp; reporting</b></span></div></div></div><span class="no">05</span></div><div class="txt" data-bg="light"><div class="ti rv"><h2>Enterprise Applications &amp; Business Platforms</h2><p>Core systems modernised for resilience, integration and measurable return on investment.</p><h3>Our core capabilities</h3><ul class="caps"><li style="--d:0ms">Custom enterprise apps</li><li style="--d:70ms">Legacy modernisation</li><li style="--d:140ms">ERP &amp; CRM extensions</li><li style="--d:210ms">Data platforms &amp; reporting</li><li style="--d:280ms">Role-based access &amp; audit</li><li style="--d:350ms">24/7 support &amp; operations</li></ul><a class="lk dk" href="contact.html?topic=Services">Discuss this service <i>→</i></a></div></div></section><section class="svc" id="svc-6" style="z-index:6"><div class="vis" data-bg="dark"><p class="cap rv">Systems that talk,<br>work that flows.</p><div class="scene"><div class="c3"><div class="sh"></div><div class="card"><svg class="ly1" viewBox="0 0 300 190" role="img" aria-label="Integration, Low-Code &amp; Workflow Automation illustration"><rect class="s" x="16" y="70" width="64" height="50" rx="8"/><rect class="a" x="118" y="30" width="64" height="50" rx="8"/><rect class="s" x="118" y="110" width="64" height="50" rx="8"/><rect class="s" x="220" y="70" width="64" height="50" rx="8"/><path class="l" d="M80 95h18l20-40M80 95h18l20 40M182 55h18l20 40M182 135h18l20-40"/><circle class="l2" cx="98" cy="95" r="4"/><circle class="l2" cx="200" cy="95" r="4"/></svg><svg class="ly2" viewBox="0 0 300 190" aria-hidden="true"><rect class="s" x="16" y="70" width="64" height="50" rx="8"/><rect class="a" x="118" y="30" width="64" height="50" rx="8"/><rect class="s" x="118" y="110" width="64" height="50" rx="8"/><rect class="s" x="220" y="70" width="64" height="50" rx="8"/><path class="l" d="M80 95h18l20-40M80 95h18l20 40M182 55h18l20 40M182 135h18l20-40"/><circle class="l2" cx="98" cy="95" r="4"/><circle class="l2" cx="200" cy="95" r="4"/></svg><i class="gl"><u></u></i><span class="chip c1"><b><i></i>API &amp; system integration</b></span><span class="chip c2"><b><i></i>Process mapping</b></span></div></div></div><span class="no">06</span></div><div class="txt" data-bg="light"><div class="ti rv"><h2>Integration, Low-Code &amp; Workflow Automation</h2><p>We connect your systems and automate the workflows between them, without months of custom plumbing.</p><h3>Our core capabilities</h3><ul class="caps"><li style="--d:0ms">API &amp; system integration</li><li style="--d:70ms">Low-code applications</li><li style="--d:140ms">Workflow automation</li><li style="--d:210ms">Process mapping</li><li style="--d:280ms">Data synchronisation</li><li style="--d:350ms">Monitoring &amp; alerts</li></ul><a class="lk dk" href="contact.html?topic=Services">Discuss this service <i>→</i></a></div></div></section></div>
+<section class="proc" id="process" data-bg="light"><div class="pin"><div class="wrap2"><small class="ey">Our process</small><h2 class="rv">How we work</h2><p class="sub rv">A repeatable method applied<br>across every engagement.</p><div class="pg"><i class="pf" aria-hidden="true"></i><div class="ps"><small>Step 1</small><h3>Understand</h3><p>We begin by listening: goals, constraints and context define the right problem before we design the solution.</p><i class="pl" aria-hidden="true">+</i></div><div class="ps"><small>Step 2</small><h3>Design &amp; Build</h3><p>We turn insight into shaped systems: thoughtful design, refined interactions and robust engineering.</p><i class="pl" aria-hidden="true">+</i></div><div class="ps"><small>Step 3</small><h3>Launch</h3><p>Automated testing, staged releases and clear hand-over make go-live calm and predictable.</p><i class="pl" aria-hidden="true">+</i></div><div class="ps"><small>Step 4</small><h3>Support &amp; Scale</h3><p>We stay accountable after launch with monitoring, 24/7 operations and continuous improvement.</p><i class="pl" aria-hidden="true">+</i></div></div></div></div></section>
+<section class="cta" data-bg="dark"><div class="wrap2"><p class="tg rv">Let’s build something that lasts</p><h2 class="rv">Ready to build<br>something bold?</h2><div class="cr rv"><span class="clk">Local time → <b id="clk">--:--</b></span><span class="acts2"><a class="lk" href="contact.html?topic=Services">Discuss your project <i>→</i></a><a class="lk" href="contact.html?topic=Call">Book a 30-minute call <i>→</i></a></span></div></div></section>
+</main>
+<!-- layout:footer --><footer class="site-footer"><div class="wrap">
+<div class="ft-cta"><div><span class="ft-eyebrow">Let's build together</span><h2>Ready to build something bold?</h2></div><a class="bt" href="contact.html">Start a project ↗</a></div>
+<div class="fg">
+<div class="ft-brand"><a class="lgo" href="index.html" aria-label="ERTES home"><svg viewBox="0 0 146 127.19"><use href="#ic" width="146" height="127.19"/></svg><svg viewBox="0 0 171 25.42"><use href="#wd" width="171" height="25.42"/><circle cx="166.14" cy="21.83" r="2.92" fill="currentColor"/></svg></a><p>End-to-end enterprise tech services, from strategy to scale.</p><a class="ft-mail" href="mailto:hello@ertes.com">hello@ertes.com</a><div class="ft-soc"><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a><a href="https://dribbble.com/" target="_blank" rel="noopener">Dribbble</a><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></div></div>
+<nav class="ft-col" aria-label="Explore"><b>Explore</b><a href="services.html">Services</a><a href="solutions.html">Solutions</a><a href="platform.html">Platform</a><a href="work.html">Work</a></nav>
+<nav class="ft-col" aria-label="Company"><b>Company</b><a href="about.html">About</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></nav>
+<div class="ft-nl"><b>Newsletter</b><p>Engineering notes and project news. No spam.</p><div class="ft-form"><input type="email" placeholder="you@company.com" aria-label="Email"><a class="bt" href="#">Subscribe</a></div></div>
+</div>
+<div class="fb"><span>© 2026 ERTES. All rights reserved.</span><span class="ft-legal"><a href="terms.html">Terms and Conditions</a><a href="privacy.html">Privacy Policy</a><a class="ft-top" href="#top-of-page" aria-label="Back to top">Back to top ↑</a></span></div>
+</div></footer><!-- /layout:footer -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>/* ERTES — shared behaviour for every page: active nav link, mobile menu,
+   newsletter box, contact form, clickable work cards. */
+(function () {
+  'use strict';
+
+  /* Point this at a real form backend (Formspree, Netlify Forms, your API…)
+     to receive contact-form and newsletter submissions. While it is empty the
+     forms validate and show a success message but send nothing. */
+  var FORM_ENDPOINT = '';
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+  /* ---------- active link ---------- */
+  var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  $$('nav ul a').forEach(function (a) {
+    var on = (a.getAttribute('href') || '').toLowerCase() === page;
+    a.classList.toggle('cur', on);
+    if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+
+  /* ---------- sticky-nav background on placeholder pages ---------- */
+  var nav = $('nav#nav');
+  if (nav && document.body.classList.contains('ph')) {
+    var s = function () { nav.classList.toggle('s', window.scrollY > 40); };
+    s(); window.addEventListener('scroll', s, { passive: true });
+  }
+
+  /* ---------- mobile menu ---------- */
+  var inner = nav && $('div', nav);
+  if (inner) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'mbtn';
+    btn.setAttribute('aria-label', 'Open menu');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', 'mnav');
+    btn.innerHTML = '<span></span><span></span>';
+    inner.appendChild(btn);
+
+    var menu = document.createElement('div');
+    menu.id = 'mnav';
+    menu.setAttribute('aria-hidden', 'true');
+    var html = '', i = 0;
+    $$('nav ul a').forEach(function (a) {
+      html += '<a style="--i:' + (i++) + '" href="' + a.getAttribute('href') + '"' +
+        (a.classList.contains('cur') ? ' class="cur"' : '') + '>' + a.textContent + '</a>';
+    });
+    var cta = $$('a', inner).filter(function (a) { return !a.closest('ul') && !a.classList.contains('lgo'); })[0];
+    if (cta) html += '<a class="mcta" style="--i:' + i + '" href="' + cta.getAttribute('href') + '">' + cta.textContent + '</a>';
+    menu.innerHTML = html;
+    document.body.appendChild(menu);
+
+    var setOpen = function (open) {
+      menu.classList.toggle('open', open);
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+    };
+    btn.addEventListener('click', function () { setOpen(!menu.classList.contains('open')); });
+    menu.addEventListener('click', function (e) {
+      if (e.target === menu || e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setOpen(false); btn.focus(); }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1000 && menu.classList.contains('open')) setOpen(false);
+    });
+  }
+
+  /* ---------- helper: send data if an endpoint is configured ---------- */
+  function send(data) {
+    if (!FORM_ENDPOINT) return new Promise(function (r) { setTimeout(r, 500); });
+    return fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (res) { if (!res.ok) throw new Error('bad status'); });
+  }
+
+  /* ---------- newsletter (footer) ---------- */
+  $$('footer .bt').forEach(function (b) {
+    if (!/subscribe/i.test(b.textContent)) return;
+    var box = b.parentElement, input = $('input', box);
+    if (!input) return;
+    var msg = document.createElement('p');
+    msg.className = 'nl-msg';
+    msg.setAttribute('role', 'status');
+    msg.setAttribute('aria-live', 'polite');
+    box.appendChild(msg);
+    b.setAttribute('role', 'button');
+    b.setAttribute('tabindex', '0');
+    var busy = false;
+    var submit = function (e) {
+      if (e) e.preventDefault();
+      if (busy) return;
+      var v = input.value.trim();
+      if (!EMAIL.test(v)) {
+        msg.className = 'nl-msg err';
+        msg.textContent = 'Please enter a valid email address.';
+        input.focus();
+        return;
+      }
+      busy = true;
+      msg.className = 'nl-msg';
+      msg.textContent = 'Subscribing…';
+      send({ type: 'newsletter', email: v }).then(function () {
+        msg.className = 'nl-msg ok';
+        msg.textContent = 'Thanks — you are on the list.';
+        input.value = '';
+      }).catch(function () {
+        msg.className = 'nl-msg err';
+        msg.textContent = 'Something went wrong. Please try again.';
+      }).then(function () { busy = false; });
+    };
+    b.addEventListener('click', submit);
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') submit(e); });
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') submit(e); });
+  });
+
+  /* ---------- contact form ---------- */
+  var form = $('#contact-form');
+  if (form) {
+    var status = $('#form-status');
+    var submitBtn = $('button[type=submit]', form);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var d = {};
+      new FormData(form).forEach(function (v, k) { d[k] = String(v).trim(); });
+      var errs = [];
+      ['name', 'email', 'message'].forEach(function (k) {
+        var el = form.elements[k];
+        var bad = !d[k] || (k === 'email' && !EMAIL.test(d[k]));
+        el.setAttribute('aria-invalid', bad ? 'true' : 'false');
+        if (bad) errs.push(k);
+      });
+      if (errs.length) {
+        status.className = 'form-status err';
+        status.textContent = errs.indexOf('email') > -1 && d.email
+          ? 'Please enter a valid email address.'
+          : 'Please fill in your name, email and a short message.';
+        form.elements[errs[0]].focus();
+        return;
+      }
+      submitBtn.disabled = true;
+      status.className = 'form-status';
+      status.textContent = 'Sending…';
+      send(Object.assign({ type: 'contact' }, d)).then(function () {
+        form.reset();
+        status.className = 'form-status ok';
+        status.textContent = 'Thanks ' + d.name.split(' ')[0] + ' — your message is in. We will reply within one business day.';
+      }).catch(function () {
+        status.className = 'form-status err';
+        status.textContent = 'We could not send that. Please email hello@ertes.com instead.';
+      }).then(function () { submitBtn.disabled = false; });
+    });
+  }
+
+  /* ---------- homepage: work cards open the Work page ---------- */
+  $$('.wc').forEach(function (c) {
+    c.style.cursor = 'pointer';
+    c.setAttribute('role', 'link');
+    c.setAttribute('tabindex', '0');
+    var go = function () { location.href = 'work.html'; };
+    c.addEventListener('click', go);
+    c.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+  });
+})();
+</script><script>/* ERTES — Services page behaviour: loader, hero text + 3D orbit, scroll phases,
+   nav colour switching, reveals, clock. Needs Three.js (loaded before this file). */
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
+  var smooth = function (a, b, v) { v = clamp((v - a) / (b - a), 0, 1); return v * v * (3 - 2 * v); };
+
+  /* ---------- loader (first visit per session) ---------- */
+  var ld = $('#ld'), seen = false;
+  try { seen = sessionStorage.getItem('ertes-sv') === '1'; sessionStorage.setItem('ertes-sv', '1'); } catch (e) {}
+  var heroIn = function () { var h = $('#hh'); if (h) h.classList.add('in'); };
+  if (ld) {
+    if (seen || reduce) { ld.remove(); heroIn(); }
+    else setTimeout(function () { ld.classList.add('gone'); setTimeout(heroIn, 350); setTimeout(function () { ld.remove(); }, 1000); }, 1300);
+  } else heroIn();
+
+  /* ---------- hero headline: letter-by-letter blur-in ---------- */
+  var hh = $('#hh');
+  if (hh) {
+    var txt = hh.textContent; hh.setAttribute('aria-label', txt); hh.textContent = '';
+    txt.split(' ').forEach(function (word, wi, arr) {
+      var w = document.createElement('span'); w.className = 'w'; w.setAttribute('aria-hidden', 'true');
+      word.split('').forEach(function (ch) {
+        var s = document.createElement('span'); s.textContent = ch; s.style.transitionDelay = (Math.random() * 500) + 'ms'; w.appendChild(s);
+      });
+      hh.appendChild(w); if (wi < arr.length - 1) hh.appendChild(document.createTextNode(' '));
+    });
+    if (!ld || !document.body.contains(ld)) heroIn();
+  }
+
+  /* ---------- hero scroll phases (read raw, apply smoothed) ---------- */
+  var hero = $('.hero'), h1w = $('.h1w'), stm = $('.stm'), prog = 0, rawProg = 0;
+  function heroApply() {
+    if (!hero) return;
+    prog += (rawProg - prog) * (reduce ? 1 : .12); if (Math.abs(rawProg - prog) < .0004) prog = rawProg;
+    if (prog === heroApply.last) return; heroApply.last = prog;
+    var a = 1 - smooth(.12, .4, prog), b = smooth(.5, .75, prog);
+    h1w.style.opacity = a; h1w.style.transform = 'translateY(calc(-50% - ' + (1 - a) * 40 + 'px)) scale(' + (1 - (1 - a) * .06) + ')';
+    stm.style.opacity = b; stm.style.transform = 'translateY(calc(-50% + ' + (1 - b) * 40 + 'px))';
+    stm.style.visibility = b < .02 ? 'hidden' : 'visible';
+  }
+
+  /* ---------- 3D orbit (Three.js) ---------- */
+  var cv = $('#cv'), visible = true, raf = 0;
+  function initScene() {
+    if (!cv || !window.THREE) return;
+    var T = THREE, ren;
+    try { ren = new T.WebGLRenderer({ canvas: cv, alpha: true, antialias: true }); } catch (e) { return; }
+    var scene = new T.Scene(), cam = new T.PerspectiveCamera(40, 1, .1, 60);
+    cam.position.set(0, 2.4, 12); cam.lookAt(0, 0, 0);
+    scene.add(new T.HemisphereLight(0xa9c8dc, 0x0b2a3d, .55));
+    var dl = new T.DirectionalLight(0xffffff, .85); dl.position.set(3, 6, 5); scene.add(dl);
+    var pl = new T.PointLight(0x2CC4F5, 1.1, 30); pl.position.set(-5, 1, 4); scene.add(pl);
+    var M = function (o) { return new T.MeshStandardMaterial(Object.assign({ color: 0x6d8497, metalness: .45, roughness: .5 }, o || {})); };
+    var accent = M({ color: 0x2CC4F5, emissive: 0x06465f, emissiveIntensity: .45 }), i;
+    var makers = [
+      function () { var g = new T.Group(); for (i = 0; i < 9; i++) { var m = new T.Mesh(new T.BoxGeometry(1.7, .07, .9), i === 6 ? accent : M()); m.position.y = (i - 4) * .15; m.rotation.y = i * .07; g.add(m); } return g; },
+      function () { var g = new T.Group(); for (i = 0; i < 9; i++) { var m = new T.Mesh(new T.TorusGeometry(.3 + i * .1, .014, 8, 64), M()); m.rotation.x = Math.PI / 2; m.position.y = (i - 4) * .06; g.add(m); } return g; },
+      function () { var g = new T.Group(); for (i = 0; i < 7; i++) { var m = new T.Mesh(new T.RingGeometry(.25 + i * .13, .3 + i * .13, 4, 1, Math.PI / 4), new T.MeshStandardMaterial({ color: i === 5 ? 0x2CC4F5 : 0x6d8497, metalness: .45, roughness: .5, side: T.DoubleSide })); m.position.z = i * .07; g.add(m); } return g; },
+      function () { var g = new T.Group(); for (i = 0; i < 8; i++) { var m = new T.Mesh(new T.CylinderGeometry(.85, .85, .045, 48), i === 2 ? accent : M()); m.position.y = (i - 3.5) * .13; g.add(m); } return g; },
+      function () { var g = new T.Group(); for (i = 0; i < 6; i++) { var m = new T.Mesh(new T.BoxGeometry(.06, 1.5, 1.1 - i * .12), M()); m.position.x = (i - 2.5) * .17; g.add(m); } return g; }
+    ];
+    var small = window.innerWidth < 700, N = small ? 3 : 5, objs = [];
+    for (var q = 0; q < N; q++) { var o = makers[q](); o.userData = { a: q / N * Math.PI * 2, sx: .3 + Math.random() * .4, sy: .2 + Math.random() * .4 }; scene.add(o); objs.push(o); }
+    var pts = [], k; for (k = 0; k <= 128; k++) pts.push(new T.Vector3(Math.cos(k / 128 * 6.2832), 0, Math.sin(k / 128 * 6.2832)));
+    var orbit = new T.LineLoop(new T.BufferGeometry().setFromPoints(pts), new T.LineBasicMaterial({ color: 0x9CCDE8, transparent: true, opacity: .16 }));
+    scene.add(orbit);
+    var A = 7, B = 3.6, mx = 0, my = 0, t0 = performance.now();
+    function size() {
+      var w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return;
+      ren.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5)); ren.setSize(w, h, false);
+      cam.aspect = w / h; cam.updateProjectionMatrix();
+      A = clamp(w / h * 3.9, 3.4, 7.4); B = small ? 3 : 3.6; orbit.scale.set(A, 1, B); orbit.position.y = -.4;
+    }
+    function frame(now) {
+      raf = 0; if (!visible || document.hidden) return;
+      var t = (now - t0) / 1000, sp = reduce ? 0 : .11 + prog * .25;
+      objs.forEach(function (o, n) {
+        var u = o.userData; u.a += sp * .016;
+        o.position.set(Math.cos(u.a) * A, Math.sin(u.a * 2 + n) * .35 - .4, Math.sin(u.a) * B);
+        var s = small ? .65 : .85; o.scale.setScalar(s);
+        o.rotation.x += reduce ? 0 : .004 * u.sx * 4; o.rotation.y += reduce ? 0 : .006 * u.sy * 3;
+      });
+      cam.position.x += (mx * 1.2 - cam.position.x) * .04; cam.position.y += (2.4 - my * .8 - cam.position.y) * .04; cam.lookAt(0, 0, 0);
+      ren.render(scene, cam);
+      if (!reduce) raf = requestAnimationFrame(frame);
+    }
+    function kick() { if (!raf) raf = requestAnimationFrame(frame); }
+    size(); window.addEventListener('resize', function () { size(); kick(); });
+    window.addEventListener('mousemove', function (e) { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, { passive: true });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) kick(); }).observe(cv);
+    kick();
+  }
+  initScene();
+
+  /* =====================================================================
+     ENGINE — one requestAnimationFrame loop. Geometry is measured once (and on
+     resize) and everything per-frame is arithmetic + direct transform/opacity
+     writes, so there are no layout reads and no style-variable invalidations.
+     ===================================================================== */
+  var mqSticky = window.matchMedia('(min-width:901px) and (min-height:600px)');
+  var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var STRIDE = 1.25;                       /* one card = 100vh + 25vh hold (matches css margin-bottom on .svc) */
+  var dpr = window.devicePixelRatio || 1;
+  var G = { sticky: false, vh: window.innerHeight, vw: window.innerWidth, stackTop: 0, techTop: 0, procTop: 0, procH: 0, ctaTop: 0, n: 0, bands: [], ctlX: [], sceneTop: [], stTop: [], pgTop: 0, pgH: 1, heroTop: 0, heroH: 0 };
+  var heroEl = $('.hero'), stackEl = $('.stack'), proc = $('.proc'), pg = $('.pg'), pf = $('.pf'), steps = $$('.ps');
+  var navEl = $('nav#nav'), navCtl = navEl ? $$('a, button', navEl) : [];
+  var stepPl = steps.map(function (el) { return $('.pl', el); });
+  var qs = function (v) { return Math.round(v * dpr) / dpr; };     /* device-pixel-exact scroll positions */
+
+  var panels = $$('.svc').map(function (svc) {
+    var o = { svc: svc, vis: $('.vis', svc), scene: $('.scene', svc), c3: $('.c3', svc), card: $('.card', svc), gl: $('.gl u', svc),
+      px: 0, py: 0, rx: 0, ry: 0, lift: 0, hover: false, ph: Math.random() * 6, key: null, active: false, cw: 440 };
+    o.dim = document.createElement('i'); o.dim.className = 'dim'; svc.appendChild(o.dim);
+    if (fine && !reduce) {
+      o.vis.addEventListener('pointermove', function (e) {
+        var r = o.vis.getBoundingClientRect();
+        o.px = clamp((e.clientX - r.left) / r.width * 2 - 1, -1, 1); o.py = clamp((e.clientY - r.top) / r.height * 2 - 1, -1, 1); o.hover = true;
+      }, { passive: true });
+      o.vis.addEventListener('pointerleave', function () { o.hover = false; o.px = 0; o.py = 0; });
+    }
+    return o;
+  });
+
+  function measure() {
+    var sy = window.scrollY, top = function (el) { return el ? el.getBoundingClientRect().top + sy : 0; };
+    G.vh = window.innerHeight; G.vw = window.innerWidth; G.sticky = mqSticky.matches; dpr = window.devicePixelRatio || 1; G.n = panels.length;
+    G.heroTop = top(heroEl); G.heroH = heroEl ? heroEl.offsetHeight : 0;
+    G.stackTop = top(stackEl); G.techTop = top(proc); G.procTop = top(proc); G.procH = proc ? proc.offsetHeight : 0; G.ctaTop = top($('.cta'));
+    G.pgTop = top(pg); G.pgH = pg ? Math.max(1, pg.offsetHeight) : 1;
+    G.sceneTop = []; G.stTop = []; G.bands = [];
+    if (!G.sticky) {
+      G.sceneTop = panels.map(function (o) { return top(o.scene); });
+      G.stTop = steps.map(function (el) { return G.pgTop + el.offsetTop; });
+      panels.forEach(function (o) {
+        var v = o.vis.getBoundingClientRect(), t = $('.txt', o.svc).getBoundingClientRect();
+        G.bands.push([v.top + sy, v.bottom + sy, 'dark'], [t.top + sy, t.bottom + sy, 'light']);
+      });
+    }
+    G.ctlX = navCtl.map(function (el) { var r = el.getBoundingClientRect(); return r.left + r.width / 2; });
+    panels.forEach(function (o) { o.key = null; o.cw = o.scene.offsetWidth || 440; });
+    lastSy = -1; procKey = ''; navKey = '';
+  }
+  var lastSy = -1, procKey = '', navKey = '', navCache = [];
+
+  /* --- which colour is under the nav bar at document y, horizontal x (no DOM reads) --- */
+  function bgAt(y, x) {
+    if (y < G.stackTop) return 'dark';
+    if (y >= G.ctaTop) return 'dark';
+    if (y >= G.techTop) return 'light';
+    if (G.sticky) return x < G.vw / 2 ? 'dark' : 'light';
+    for (var i = 0; i < G.bands.length; i++) if (y >= G.bands[i][0] && y < G.bands[i][1]) return G.bands[i][2];
+    return 'light';
+  }
+
+  /* ---------- scroll engine: inertia + one-scroll-per-card snapping ---------- */
+  var cur = window.scrollY, tgt = cur, mode = 0 /* 0 idle, 1 inertia, 2 snap */, lockUntil = 0, prevWheel = 0;
+  var snapFrom = 0, snapT0 = -1, snapDur = 900, lastT = 0;
+  var maxScroll = function () { return Math.max(0, document.documentElement.scrollHeight - window.innerHeight); };
+  var menuOpen = function () { return document.documentElement.style.overflow === 'hidden'; };
+  var ease = function (k) { return k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2; };
+
+  function scrollStep(now) {
+    if (mode === 0) return false;
+    if (mode === 1) {
+      /* someone else moved the page (find-in-page, scrollbar drag, scrollTo): yield */
+      if (Math.abs(window.scrollY - cur) > 3) { cur = tgt = window.scrollY; mode = 0; return false; }
+      var dt = Math.min(now - lastT, 50), d = tgt - cur;
+      if (Math.abs(d) < .25) { cur = tgt; mode = 0; } else cur += d * (1 - Math.exp(-dt / 105));
+    } else {
+      if (snapT0 < 0) snapT0 = now;
+      var k = clamp((now - snapT0) / snapDur, 0, 1); cur = snapFrom + (tgt - snapFrom) * ease(k);
+      if (k >= 1) { cur = tgt; mode = 0; }
+    }
+    window.scrollTo(0, qs(cur)); return true;
+  }
+  function goTo(y) { if (mode === 0) cur = window.scrollY; tgt = clamp(y, 0, maxScroll()); mode = 1; }
+  function snapTo(y) {
+    y = clamp(y, 0, maxScroll()); snapFrom = mode ? cur : window.scrollY; tgt = y; cur = snapFrom; snapT0 = -1; mode = 2;
+    snapDur = clamp(Math.abs(y - snapFrom) / G.vh * 720 + 420, 760, 1200); lockUntil = performance.now() + snapDur + 160;
+  }
+  function snapPts() {
+    var a = [], i, st = G.vh * STRIDE; for (i = 0; i < G.n; i++) a.push(Math.round(G.stackTop + i * st)); return a;
+  }
+  /* null when outside the card zone, else {t: next snap position or null} */
+  function zone(dir) {
+    if (!G.sticky || !G.n) return null;
+    var p = snapPts(), vh = G.vh, y = mode === 2 ? tgt : window.scrollY, last = p[p.length - 1], i, t = null;
+    if (y < p[0] - vh * .6 || y > last + vh * .5) return null;
+    if (dir > 0) { for (i = 0; i < p.length; i++) if (p[i] > y + 8) { t = p[i]; break; } }
+    else { for (i = p.length - 1; i >= 0; i--) if (p[i] < y - 8) { t = p[i]; break; } }
+    return { t: t };
+  }
+  var idleT = 0;
+  function settle() {
+    if (mode || !G.sticky || !G.n || menuOpen()) return;
+    var p = snapPts(), y = window.scrollY, sd = G.vh * STRIDE;
+    if (y <= p[0] || y >= p[p.length - 1]) return;
+    var k = Math.floor((y - p[0]) / sd), f = (y - p[0]) / sd - k;
+    if (f <= .2 || Math.abs(y - p[k]) < 3) return;
+    snapTo(f > .6 ? p[k + 1] : p[k]);
+  }
+
+  if (!reduce) {
+    window.addEventListener('wheel', function (e) {
+      if (e.ctrlKey || e.defaultPrevented || menuOpen()) return;
+      e.preventDefault();
+      var now = performance.now(), gap = now - prevWheel; prevWheel = now;
+      var dy = e.deltaMode === 1 ? e.deltaY * 34 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
+      if (!dy) return;
+      var z = zone(dy > 0 ? 1 : -1);
+      if (z) {
+        if (mode === 2 || now < lockUntil) return;               /* swallow while a card moves / inertia tail */
+        if (z.t !== null) { if (gap > 70 && Math.abs(dy) >= 2) snapTo(z.t); return; }
+      }
+      if (mode === 2) return;
+      if (mode === 0) { cur = window.scrollY; tgt = cur; }
+      tgt = clamp(tgt + dy, 0, maxScroll()); mode = 1;
+    }, { passive: false });
+
+    window.addEventListener('scroll', function () {
+      if (!mode) cur = tgt = window.scrollY;
+      clearTimeout(idleT); idleT = setTimeout(settle, 170);
+    }, { passive: true });
+
+    window.addEventListener('keydown', function (e) {
+      var t = document.activeElement, tag = t && t.tagName;
+      if (e.altKey || e.ctrlKey || e.metaKey || menuOpen() || /^(INPUT|TEXTAREA|SELECT|BUTTON|A)$/.test(tag || '')) return;
+      var y = mode ? tgt : window.scrollY, vh = window.innerHeight, k = e.key, dir = 0, n = null;
+      if (k === 'ArrowDown' || k === 'PageDown' || (k === ' ' && !e.shiftKey)) dir = 1;
+      else if (k === 'ArrowUp' || k === 'PageUp' || (k === ' ' && e.shiftKey)) dir = -1;
+      else if (k === 'Home') n = 0; else if (k === 'End') n = maxScroll(); else return;
+      e.preventDefault();
+      if (dir) {
+        var z = zone(dir);
+        if (z && (mode === 2 || performance.now() < lockUntil)) return;
+        if (z && z.t !== null) { snapTo(z.t); return; }
+        n = y + dir * (k === 'ArrowDown' || k === 'ArrowUp' ? 90 : vh * .88);
+      }
+      goTo(n);
+    });
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+      var el = document.getElementById(a.getAttribute('href').slice(1)); if (!el) return;
+      e.preventDefault();
+      var pi = el.classList.contains('svc') ? $$('.svc').indexOf(el) : -1;
+      if (pi > -1 && G.sticky) snapTo(snapPts()[pi]);
+      else goTo(el.getBoundingClientRect().top + window.scrollY);
+    });
+  }
+
+  /* ---------- per-frame visuals ---------- */
+  function render(sy, now) {
+    var vh = G.vh, sticky = G.sticky, n = G.n, stride = vh * STRIDE, k, o;
+    var scrolled = sy !== lastSy; lastSy = sy;
+    var t = (now - (render.t0 || (render.t0 = now))) / 1000;
+
+    if (heroEl) rawProg = clamp((sy - G.heroTop) / Math.max(1, G.heroH - vh), 0, 1);
+    heroApply();
+
+    for (k = 0; k < n; k++) {
+      o = panels[k]; var top, nextTop, eIn, tt, vis, active;
+      if (sticky) {
+        top = G.stackTop + k * stride - sy; nextTop = k < n - 1 ? top + stride : Infinity;
+        eIn = reduce ? 1 : 1 - clamp(top / vh, 0, 1);
+        tt = (reduce || k >= n - 1) ? 0 : 1 - clamp(nextTop / vh, 0, 1);
+        vis = top < vh && nextTop > 0;
+        active = top < vh * 1.08 && nextTop > -vh * .3;
+        if (active !== o.active) { o.active = active; o.svc.style.willChange = active ? 'transform' : ''; }
+        var key = ((eIn * 400) | 0) + ':' + ((tt * 400) | 0);
+        if (key !== o.key) {
+          o.key = key; var tf = '', rd = false;
+          if (eIn < 1) { var q = 1 - smooth(0, 1, eIn); tf = 'perspective(1700px) rotateX(' + (-q * 9).toFixed(2) + 'deg) scale(' + (1 - q * .05).toFixed(4) + ')'; o.svc.style.transformOrigin = '50% 0'; rd = true; }
+          else if (tt > 0) { var q2 = smooth(0, 1, tt); tf = 'perspective(1700px) rotateX(' + (q2 * 5).toFixed(2) + 'deg) scale(' + (1 - q2 * .09).toFixed(4) + ') translateY(' + (-q2 * 2.5).toFixed(2) + 'vh)'; o.svc.style.transformOrigin = '50% 100%'; rd = true; }
+          o.svc.style.transform = tf; o.dim.style.opacity = (tt * .65).toFixed(3);
+          if (rd !== o.rd) { o.rd = rd; o.svc.classList.toggle('rd', rd); }
+        }
+      } else {
+        top = G.sceneTop[k] - sy; eIn = reduce ? 1 : smooth(0, 1, clamp((vh * .95 - top) / (vh * .55), 0, 1)); vis = top < vh && top > -420;
+        if (o.key !== 'm') { o.key = 'm'; o.svc.style.transform = ''; o.svc.style.willChange = ''; o.dim.style.opacity = 0; o.svc.classList.remove('rd'); o.rd = false; }
+      }
+      if (!vis) continue;
+
+      /* 3D card: tilt toward pointer (or idle sway), lift, glare */
+      var e = sticky && !reduce ? smooth(0, 1, eIn) : eIn, tx, ty;
+      if (o.hover) { tx = -o.py * 13; ty = o.px * 17; o.lift += (34 - o.lift) * .09; }
+      else if (reduce) { tx = ty = 0; o.lift += (0 - o.lift) * .09; }
+      else { tx = Math.cos(t * .55 + o.ph) * (fine ? 2.2 : 4); ty = Math.sin(t * .7 + o.ph) * (fine ? 3 : 7); o.lift += (0 - o.lift) * .09; }
+      o.rx += (tx - o.rx) * .1; o.ry += (ty - o.ry) * .1;
+      var inv = 1 - e;
+      o.c3.style.transform = 'translate3d(0,' + (inv * 60).toFixed(1) + 'px,' + (o.lift - inv * 140).toFixed(1) + 'px) rotateX(' + (inv * 26 + o.rx).toFixed(2) + 'deg) rotateY(' + (-inv * 14 + o.ry).toFixed(2) + 'deg)';
+      o.c3.style.opacity = clamp(e * 2, 0, 1).toFixed(2);
+      var gx = (o.hover ? o.px : Math.sin(t * .7 + o.ph)) * o.cw * .34, gy = (o.hover ? o.py : Math.cos(t * .55 + o.ph)) * o.cw * .22;
+      o.gl.style.transform = 'translate3d(' + gx.toFixed(1) + 'px,' + gy.toFixed(1) + 'px,0)';
+    }
+
+    /* nav colours follow the section beneath each control */
+    if (scrolled && navCtl.length) {
+      var y = sy + 34;
+      for (k = 0; k < navCtl.length; k++) {
+        var on = bgAt(y, G.ctlX[k]);
+        if (navCache[k] !== on) { navCache[k] = on; navCtl[k].setAttribute('data-on', on); }
+      }
+    }
+
+    /* "How we work": steps appear one by one while the section is pinned */
+    if (proc) {
+      var fill, ps, p;
+      if (sticky) {
+        p = clamp((sy - G.procTop) / Math.max(1, G.procH - vh), 0, 1);
+        fill = clamp((p - .06) / .88, 0, 1);
+        ps = steps.map(function (_, i) { return smooth(.06 + i * .22, .06 + i * .22 + .16, p); });
+      } else {
+        fill = clamp((vh * .75 - (G.pgTop - sy)) / G.pgH, 0, 1);
+        ps = steps.map(function (_, i) { return smooth(0, 1, (vh * .92 - (G.stTop[i] - sy)) / (vh * .3)); });
+      }
+      if (reduce) { fill = 1; ps = ps.map(function () { return 1; }); }
+      var pk = ((fill * 500) | 0) + ps.map(function (v) { return (v * 250) | 0; }).join(',') + sticky;
+      if (pk !== procKey) {
+        procKey = pk;
+        pf.style.transform = sticky ? 'scaleX(' + fill.toFixed(4) + ')' : 'scaleY(' + fill.toFixed(4) + ')';
+        steps.forEach(function (el, i) {
+          var v = ps[i]; el.style.opacity = v.toFixed(3); el.style.transform = 'translate3d(0,' + ((1 - v) * 46).toFixed(1) + 'px,0)';
+          stepPl[i].style.transform = 'scale(' + (.5 + v * .5).toFixed(3) + ')'; stepPl[i].classList.toggle('on', v > .6);
+        });
+      }
+    }
+  }
+
+  var resizeT = 0;
+  measure();
+  window.addEventListener('resize', function () { clearTimeout(resizeT); resizeT = setTimeout(function () { measure(); if (mode === 0) { cur = tgt = window.scrollY; } }, 120); });
+  window.addEventListener('load', measure);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  if (window.ResizeObserver) { var ro = new ResizeObserver(function () { clearTimeout(resizeT); resizeT = setTimeout(measure, 80); }); ro.observe(document.body); }
+  if (mqSticky.addEventListener) mqSticky.addEventListener('change', measure);
+
+  (function loop(now) {
+    requestAnimationFrame(loop);
+    if (document.hidden) { lastT = now; return; }
+    var moved = scrollStep(now); lastT = now;
+    render(moved || mode ? qs(cur) : window.scrollY, now);
+  })(performance.now());
+
+  /* ---------- reveal on scroll ---------- */
+  var rv = $$('.rv');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (en) { en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .18 });
+    rv.forEach(function (el) { io.observe(el); });
+  } else rv.forEach(function (el) { el.classList.add('in'); });
+
+  /* ---------- local clock ---------- */
+  var clk = $('#clk');
+  if (clk) { var tk = function () { var d = new Date(); clk.textContent = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }; tk(); setInterval(tk, 20000); }
+
+})();
+</script><script src="js/services-bg.js"></script></body></html>

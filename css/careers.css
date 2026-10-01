@@ -1,0 +1,138 @@
+/* ERTES — Careers page. Loaded after pages.css / site.css / platform-bg.css / layout.css.
+   Animation is driven by js/careers.js (GSAP + ScrollTrigger). Everything here is also fully
+   readable with no JS: animated states are only ever applied by the script. */
+.cr{--c:#2CC4F5;--v:#7c8cff;--a:#9CCDE8;--w:#F4F7F9;--line:rgba(44,196,245,.2);--card:rgba(6,20,34,.7)}
+.cr main{overflow:clip}
+.cr .wrap{padding:0 24px}
+.cr-eyebrow{display:inline-block;font:500 12px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--c)}
+.cr h2{font-size:clamp(1.9rem,4.6vw,3.3rem);line-height:1.08;letter-spacing:-.015em;margin:14px 0 0;font-weight:700}
+.cr-sub{max-width:620px;margin:16px 0 0;color:var(--a);line-height:1.7}
+.cr-grad{background:linear-gradient(90deg,var(--c),var(--v));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.cr-sec{padding:110px 0}
+
+/* progress bar */
+.cr-progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:70;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--c),var(--v));box-shadow:0 0 12px var(--c);pointer-events:none}
+
+/* ---------- hero ---------- */
+.cr-hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:150px 0 90px}
+.cr-hero .wrap{position:relative;z-index:2;width:100%}
+.cr-hero h1{font-size:clamp(2.8rem,8.4vw,6.4rem);line-height:1.02;letter-spacing:-.025em;margin:20px 0 26px;max-width:10.5em;font-weight:800}
+.cr-hero .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .14em;margin:0 -.04em -.14em}
+.cr-hero .wi{display:inline-block;will-change:transform}
+.cr-hero .lead{max-width:560px}
+.cr-hero .acts{margin-top:34px}
+.cr-orb{position:absolute;right:max(-4vw,-60px);top:10%;width:min(52vw,640px);aspect-ratio:1;z-index:1;pointer-events:none;opacity:.9}
+.cr-orb svg{width:100%;height:100%;overflow:visible}
+.cr-cue{position:absolute;left:24px;bottom:34px;z-index:2;display:flex;align-items:center;gap:12px;font:500 11px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.22em;color:var(--a)}
+.cr-cue i{display:block;width:1px;height:46px;background:linear-gradient(var(--c),transparent);transform-origin:top;animation:crcue 2.2s ease-in-out infinite}
+@keyframes crcue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* ---------- marquee ---------- */
+.cr-mq{position:relative;z-index:1;overflow:hidden;border-block:1px solid var(--line);background:rgba(3,9,19,.55);padding:22px 0}
+.cr-mq-track{display:flex;width:max-content;will-change:transform}
+.cr-mq-g{display:flex;flex:none;align-items:center}
+.cr-mq-g span{font:800 clamp(1.5rem,3.4vw,2.7rem)/1 "Plus Jakarta Sans",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.02em;padding:0 .6em;color:transparent;-webkit-text-stroke:1px rgba(156,205,232,.55);white-space:nowrap}
+.cr-mq-g span:nth-child(3n){-webkit-text-stroke:0;background:linear-gradient(90deg,var(--c),var(--v));-webkit-background-clip:text;background-clip:text}
+.cr-mq-g i{font-style:normal;color:var(--c);font-size:1.2rem}
+
+/* ---------- stats ---------- */
+.cr-stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:18px;background:var(--card);overflow:hidden}
+.cr-stat{padding:40px 28px;border-right:1px solid var(--line)}
+.cr-stat:last-child{border-right:0}
+.cr-num{display:flex;align-items:baseline;gap:2px;font:800 clamp(2.4rem,5vw,3.8rem)/1 "Plus Jakarta Sans",system-ui,sans-serif}
+.cr-num b{font-weight:800}
+.cr-num u{text-decoration:none;font-size:.55em}
+.cr-num b,.cr-num u{background:linear-gradient(90deg,var(--c),var(--v));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.cr-stat p{margin:12px 0 0;color:var(--a);font-size:.92rem;line-height:1.5}
+
+/* ---------- how we work (horizontal scroll) ---------- */
+.cr-hz{position:relative;padding:110px 0}
+.cr-hz-head{margin-bottom:46px}
+.cr-hz-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1150px;margin:auto;padding:0 24px}
+.cr-panel{position:relative;border:1px solid var(--line);background:var(--card);border-radius:20px;padding:34px;min-height:320px;display:flex;flex-direction:column;transition:border-color .3s,box-shadow .3s}
+.cr-panel:hover{border-color:rgba(44,196,245,.6);box-shadow:0 0 36px rgba(44,196,245,.14)}
+.cr-panel .n{font:800 4.4rem/1 "Plus Jakarta Sans",system-ui,sans-serif;color:transparent;-webkit-text-stroke:1px rgba(44,196,245,.55);letter-spacing:-.02em}
+.cr-panel h3{font-size:1.5rem;line-height:1.2;margin:26px 0 12px}
+.cr-panel p{margin:0;color:var(--a);line-height:1.7}
+.cr-panel small{margin-top:auto;padding-top:26px;font:500 11px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--c)}
+.cr-hz-bar{display:none}
+.hz-on .cr-hz{height:100vh;padding:0;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.hz-on .cr-hz-head{width:100%;max-width:1150px;margin:0 auto 38px;padding:0 24px}
+.hz-on .cr-hz-track{display:flex;width:max-content;max-width:none;margin:0;gap:28px;padding:0 max(24px,calc((100vw - 1150px)/2)) 0}
+.hz-on .cr-panel{flex:0 0 min(64vw,520px)}
+.hz-on .cr-hz-bar{display:block;position:absolute;left:max(24px,calc((100vw - 1150px)/2));right:max(24px,calc((100vw - 1150px)/2));bottom:46px;height:2px;background:rgba(44,196,245,.18)}
+.hz-on .cr-hz-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--c),var(--v));transform-origin:0 50%;transform:scaleX(0);box-shadow:0 0 10px var(--c)}
+
+/* ---------- perks ---------- */
+.cr-perks{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:50px}
+.cr-perks .card{padding:30px}
+.cr-perks .card h3{font-size:1.2rem;margin:12px 0 10px}
+
+/* ---------- open roles ---------- */
+.cr-roles-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
+.cr-chips{display:flex;flex-wrap:wrap;gap:8px}
+.cr-chip{font:500 13px/1 Inter,system-ui,sans-serif;color:var(--a);background:none;border:1px solid rgba(44,196,245,.3);border-radius:999px;padding:10px 16px;cursor:pointer;transition:.25s}
+.cr-chip:hover{color:var(--w);border-color:var(--c)}
+.cr-chip[aria-pressed=true]{color:#031018;background:linear-gradient(90deg,var(--c),var(--v));border-color:transparent;font-weight:600}
+.cr-count{margin:26px 0 12px;font:500 12px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--a)}
+.cr-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.cr-role{border-bottom:1px solid var(--line)}
+.cr-role[hidden]{display:none}
+.cr-role-h{width:100%;display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 28px;gap:16px;align-items:center;text-align:left;padding:26px 6px;background:none;border:0;color:var(--w);font:inherit;cursor:pointer;transition:background .3s,padding .3s}
+.cr-role-h:hover{background:rgba(44,196,245,.05);padding-left:18px}
+.cr-role-h strong{font:700 1.2rem/1.3 "Plus Jakarta Sans",system-ui,sans-serif}
+.cr-role-h span{color:var(--a);font-size:.92rem}
+.cr-role-h .pl{position:relative;width:20px;height:20px;justify-self:end;transition:transform .4s}
+.cr-role-h .pl:before,.cr-role-h .pl:after{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:var(--c);border-radius:2px}
+.cr-role-h .pl:after{transform:rotate(90deg);transition:.3s}
+.cr-role-h[aria-expanded=true] .pl{transform:rotate(180deg)}
+.cr-role-h[aria-expanded=true] .pl:after{transform:rotate(0)}
+.cr-role-p{overflow:hidden}
+.cr-role-p[hidden]{display:none}
+.cr-role-in{display:grid;grid-template-columns:1.4fr 1fr;gap:34px;padding:6px 6px 34px}
+.cr-role-in p{margin:0;color:var(--a);line-height:1.7}
+.cr-role-in ul{margin:0;padding:0 0 0 18px;color:var(--a);line-height:1.9}
+.cr-role-in li::marker{color:var(--c)}
+.cr-role-in .bt{margin-top:22px}
+.cr-open{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;margin-top:40px;padding:30px 32px;border:1px dashed rgba(156,205,232,.4);border-radius:16px;background:rgba(6,20,34,.5)}
+.cr-open h3{font-size:1.3rem;margin:0 0 6px}
+.cr-open p{margin:0;color:var(--a)}
+
+/* ---------- hiring process ---------- */
+.cr-proc{display:grid;grid-template-columns:1fr 1.25fr;gap:60px;align-items:start}
+.cr-proc-l{position:sticky;top:130px}
+.cr-steps{position:relative;padding-left:64px}
+.cr-line{position:absolute;left:19px;top:20px;bottom:20px;width:2px;background:rgba(44,196,245,.18)}
+.cr-line i{display:block;width:100%;height:100%;background:linear-gradient(var(--c),var(--v));transform-origin:top;transform:scaleY(0);box-shadow:0 0 10px var(--c)}
+.cr-step{position:relative;padding:0 0 54px}
+.cr-step:last-child{padding-bottom:0}
+.cr-dot{position:absolute;left:-64px;top:0;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#061422;border:1px solid rgba(44,196,245,.35);font:600 12px/1 "JetBrains Mono",ui-monospace,monospace;color:var(--a);transition:.4s}
+.cr-step.on .cr-dot{color:#031018;background:linear-gradient(135deg,var(--c),var(--v));border-color:transparent;box-shadow:0 0 22px rgba(44,196,245,.6)}
+.cr-step h3{font-size:1.35rem;margin:6px 0 8px}
+.cr-step p{margin:0;color:var(--a);line-height:1.7}
+.cr-step em{display:inline-block;margin-top:12px;font:500 11px/1 "JetBrains Mono",ui-monospace,monospace;font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
+
+/* ---------- responsive ---------- */
+@media(max-width:980px){
+  .cr-perks{grid-template-columns:repeat(2,1fr)}
+  .cr-stats{grid-template-columns:repeat(2,1fr)}
+  .cr-stat:nth-child(2){border-right:0}
+  .cr-stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .cr-proc{grid-template-columns:1fr;gap:40px}
+  .cr-proc-l{position:static}
+  .cr-role-h{grid-template-columns:1fr 28px;gap:6px 16px}
+  .cr-role-h strong{grid-column:1}
+  .cr-role-h .pl{grid-column:2;grid-row:1}
+  .cr-role-h span{grid-column:1/-1;display:inline}
+  .cr-role-in{grid-template-columns:1fr;gap:20px}
+  .cr-orb{opacity:.35;width:80vw;top:14%}
+}
+@media(max-width:620px){
+  .cr-sec,.cr-hz{padding:80px 0}
+  .cr-perks{grid-template-columns:1fr}
+  .cr-stat{padding:28px 20px}
+  .cr-hero{padding-top:130px}
+  .cr-cue{display:none}
+  .cr-open{padding:24px}
+}
+@media(prefers-reduced-motion:reduce){.cr-cue i{animation:none}.cr-progress{display:none}}

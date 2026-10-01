@@ -1,0 +1,111 @@
+/* ERTES — About page: same living background + pointer interaction as the Homepage.
+   Loaded AFTER about.css and site.css, so everything here overrides the old
+   light/dark section mix. Layers (created by js/about-bg.js): #fx ambient glow + grid,
+   #gr film grain, #gn interactive particle network, #cur/#cdot custom cursor, #hud read-out.
+   Colour tokens are the Homepage dark/futuristic ones. */
+
+/* ---------- Homepage colour tokens ---------- */
+:root {
+  --k: #030913;
+  --t: #e6f3fb;
+  --a: #8fdcff;
+  --b: #2cc4f5;
+  --bgd: #030913;
+  --bgb: #2cc4f5;
+  --bga: #8fdcff;
+  color-scheme: dark;
+}
+body { background: var(--bgd); color: var(--t); }
+
+/* ---------- ambient layers (identical to Homepage) ---------- */
+#fx { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+#fx:before {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(44,196,245,.06) 1px, #0000 1px), linear-gradient(90deg, rgba(44,196,245,.06) 1px, #0000 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000, #0000 75%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000, #0000 75%);
+}
+#fx i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .45; animation: bgfl 24s ease-in-out infinite alternate; }
+#fx i:nth-child(1) { width: 46vw; height: 46vw; left: -12vw; top: -10vw; background: #0e5f8c; }
+#fx i:nth-child(2) { width: 38vw; height: 38vw; right: -10vw; top: 30vh; background: #4b2c9a; animation-delay: -8s; }
+#fx i:nth-child(3) { width: 34vw; height: 34vw; left: 30vw; bottom: -14vw; background: #0b7a8f; animation-delay: -15s; }
+@keyframes bgfl { to { transform: translate(8vw, 6vh) scale(1.25); } }
+#gr {
+  position: fixed; inset: 0; z-index: 4; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+#gr:after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,.5) 0 1px, #0000 1px 3px); opacity: .25; }
+
+/* interactive particle network (fixed, never blocks clicks) */
+#gn { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+
+/* custom cursor + HUD (cursor sits above the nav, which is z-index 50) */
+#cur { position: fixed; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1px solid var(--bgb); border-radius: 50%; z-index: 200; pointer-events: none; box-shadow: 0 0 14px rgba(44,196,245,.5); transition: width .25s, height .25s, margin .25s, background .25s; }
+#cur.h { width: 60px; height: 60px; margin: -30px 0 0 -30px; background: rgba(44,196,245,.12); }
+#cdot { position: fixed; left: 0; top: 0; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--bgb); z-index: 201; pointer-events: none; box-shadow: 0 0 10px var(--bgb); }
+#hud { position: fixed; left: 18px; bottom: 14px; z-index: 40; font: 500 10px/1.6 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .16em; color: var(--bga); opacity: .7; pointer-events: none; }
+#hud b { color: #3dff9a; animation: bgbk 1.4s infinite; }
+@keyframes bgbk { 50% { opacity: 0; } }
+@media (pointer: coarse), (max-width: 700px) { #cur, #cdot, #hud { display: none; } }
+
+/* ---------- let the fixed background show through every section ---------- */
+.lt, .dk { background: transparent; color: var(--t); }
+.lt:before, .dk:before, .lt:after, .dk:after, .ed { display: none; }   /* old per-section glow / grid / seam fades */
+.hv, .hv-stk { background: transparent; }
+.stk, #aw .stk, .cl .stk { background: transparent; color: var(--t); }
+.vals .ov-stage { background: transparent; color: var(--t); }
+.hw2-stage, .sk, .tm2 { background: transparent; }
+.hv-end { background: transparent; }
+.ov { display: none; }                 /* the intro logo now dissolves (about.js) instead of flashing white */
+.br { background: transparent; color: var(--t); }
+
+/* ---------- nav: Homepage style ---------- */
+nav { mix-blend-mode: normal; color: var(--t); }
+nav:before { content: ""; position: absolute; inset: 0 0 -24px; z-index: -1; pointer-events: none; background: linear-gradient(rgba(3,9,19,.7), rgba(3,9,19,0)); }
+nav a:hover { color: var(--b); text-shadow: 0 0 12px var(--b); }
+nav li a:after { background: var(--b); }
+.nb { border-color: rgba(44,196,245,.55); }
+.nb:hover { color: var(--b); border-color: var(--b); box-shadow: 0 0 18px rgba(44,196,245,.35); }
+#pg { background: var(--b); box-shadow: 0 0 12px var(--b); }
+
+/* ---------- buttons: Homepage style ---------- */
+.bt { color: #031018; background: linear-gradient(90deg, var(--b), #7c8cff); border-color: transparent; box-shadow: 0 0 22px rgba(44,196,245,.35); }
+.bt:hover { background: linear-gradient(90deg, var(--b), #7c8cff); box-shadow: 0 0 38px rgba(44,196,245,.75); }
+.bt.l { background: var(--t); color: var(--bgd); }
+footer .bt { color: #031018; }
+
+/* ---------- sections that used light panels -> dark glass ---------- */
+.hv-dark { background: var(--bgd); }
+.at .bd { background: rgba(44,196,245,.08); border-color: rgba(44,196,245,.35); }
+
+/* values: stacked cards */
+.ov-card { filter: drop-shadow(0 0 30px rgba(44,196,245,.12)); }
+.ov-r { background: rgba(5,16,30,.82); border-bottom-color: rgba(44,196,245,.2); box-shadow: inset 0 0 0 1px rgba(44,196,245,.14); }
+.ov-r:before { background: linear-gradient(rgba(3,9,19,.55), rgba(3,9,19,.15)); }
+.ov-slab { background: linear-gradient(rgba(44,196,245,.12), rgba(44,196,245,.02)); }
+
+/* team */
+.tm2-lines line { stroke: rgba(44,196,245,.18); }
+.tm2-lines line.hot { stroke: rgba(44,196,245,.75); }
+.tm2-c { background: rgba(3,9,19,.92); border-color: rgba(44,196,245,.3); box-shadow: 0 0 40px rgba(44,196,245,.1); }
+.tm2 .cd:hover { box-shadow: 0 0 0 2px var(--b), 0 0 26px rgba(44,196,245,.5); }
+
+/* awards */
+#aw .stk, .ac { color: var(--t); }
+.ac div { background: rgba(5,16,30,.72); color: var(--t); border: 1px solid rgba(44,196,245,.28); box-shadow: 0 0 24px rgba(44,196,245,.1); transition: transform .25s ease-out, box-shadow .3s; will-change: transform; }
+.ac div:hover { box-shadow: 0 0 34px rgba(44,196,245,.35); }
+
+/* brands */
+.br-h { color: var(--t); }
+.br-h.act { color: rgba(230,243,251,.26); }
+.br-h.act .br-w.on { color: #fff; text-shadow: 0 0 22px rgba(44,196,245,.55); }
+.br-cols ul { border-left-color: rgba(44,196,245,.22); }
+.br-cols li { color: #9fb7c6; }
+.br-cols li.m { color: #5f7a8c; }
+
+/* footer */
+footer input { border-color: rgba(44,196,245,.3); }
+.gw { -webkit-text-stroke-color: rgba(44,196,245,.3); }
+
+@media (prefers-reduced-motion: reduce) { #fx i, #hud b { animation: none; } }

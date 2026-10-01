@@ -1,0 +1,52 @@
+/* ERTES — Work page. Uses css/contact.css for the shared nav, menu, cookie bar and footer. */
+body.work{background:#000}
+#wpin{position:relative;height:200vh;height:200svh}
+#whero{position:sticky;top:0;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px}
+#whero .thumbs{position:absolute;inset:0;pointer-events:none}
+#whero .th{position:absolute;left:var(--x);top:var(--y);width:var(--w);will-change:transform,opacity;transform-origin:50% 50%}
+#whero .th img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:3px;opacity:0;transform:scale(.8) rotate(var(--r,0deg));animation:thIn 1s var(--ease) calc(var(--i)*70ms + .2s) forwards,thFloat var(--dur,7s) ease-in-out calc(var(--i)*-.9s) infinite alternate;box-shadow:0 12px 40px rgba(0,0,0,.6)}
+@keyframes thIn{to{opacity:.92;transform:scale(1) rotate(var(--r,0deg))}}
+@keyframes thFloat{from{translate:0 -7px}to{translate:0 8px}}
+#whero .stack{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;margin-top:6vh}
+#glogo{width:clamp(150px,17vw,250px);aspect-ratio:146/127.19;display:block;margin-bottom:3.4vh;will-change:transform,filter}
+#whero h1{font-weight:300;font-size:clamp(3.4rem,8vw,7.8rem);letter-spacing:-.055em;line-height:1;color:#f2f2f2}
+#whero p.sub{margin-top:18px;max-width:330px;font-size:clamp(.78rem,.95vw,.9rem);line-height:1.5;color:#bdbdbd}
+#whero .dot{position:absolute;left:50%;bottom:6vh;z-index:3;margin-left:-7px;width:14px;height:14px;border:1px solid #777;border-radius:50%}
+#whero .dot:after{content:"";position:absolute;left:50%;top:3px;width:1px;height:6px;background:#aaa;animation:dotm 1.8s ease-in-out infinite}
+#whero:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(38% 36% at 50% 62%,rgba(0,0,0,.72),transparent 72%)}
+
+#list{position:relative;background:#000;padding:8vh clamp(16px,2.4vw,40px) 20vh;overflow:hidden}
+#wires{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.pj{position:relative;z-index:2;width:min(46vw,780px);margin:0 0 24vh}
+.pj.r{margin-left:auto}
+.pj.c{margin-left:auto;margin-right:auto;width:min(56vw,940px)}
+.pj:last-of-type{margin-bottom:0}
+.pj a.fig{display:block;position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:2px;background:#0b0b0b}
+.pj a.fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;scale:1.14;translate:0 var(--py,0px);transition:scale 1s var(--ease),filter .5s;filter:saturate(1.02)}
+.pj:hover a.fig img,.pj a.fig:focus-visible img{scale:1.19}
+.pj a.fig .no{position:absolute;left:14px;top:12px;color:#fff;mix-blend-mode:difference;font-size:10px}
+.pj .meta{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px;align-items:end}
+.pj .lb{color:#777;font-size:10px;margin-bottom:8px}
+.pj h3{font-weight:300;font-size:clamp(1.15rem,1.7vw,1.6rem);letter-spacing:-.03em;line-height:1.1;color:#f4f4f4}
+.pj p{margin-top:8px;max-width:280px;font-size:12px;line-height:1.55;color:#9c9c9c}
+.pj .ex{display:flex;align-items:center;justify-content:space-between;gap:18px;width:min(100%,300px);padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.45);font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;transition:border-color .3s,gap .3s}
+.pj .ex:hover,.pj:hover .ex{border-color:#fff;gap:26px}
+#more{position:relative;z-index:2;text-align:center;margin-top:20vh}
+#more a{display:inline-flex;align-items:center;gap:12px;height:38px;padding:0 22px;border:1px solid rgba(255,255,255,.4);border-radius:3px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;transition:background .3s,color .3s}
+#more a:hover{background:#fff;color:#000}
+
+@media(max-width:860px){
+  .pj{width:100%;margin-bottom:16vh}
+  .pj.r,.pj.c{margin-left:0;margin-right:0;width:100%}
+  .pj .meta{grid-template-columns:1fr;gap:16px}
+  .pj .ex{width:100%}
+  #whero .th:nth-child(n+11){display:none}
+}
+@media(max-width:560px){
+  #whero .th:nth-child(n+9){display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  #whero .th img{animation:none;opacity:.92;transform:rotate(var(--r,0deg))}
+  #whero .dot:after{animation:none}
+  .pj a.fig img{transition:none}
+}
