@@ -1,4 +1,4 @@
-/* ERTES — Solutions page: Homepage background + pointer interaction, ported to solutions.html.
+/* ERTES — Services page: Homepage background + pointer interaction, ported to services.html.
    Same layers and behaviour as the Homepage ("futuristic extras" + global network):
    - #fx / #gr   ambient glow blobs, grid and film grain
    - #gn         fixed particle network: dots drift, get pushed away by the pointer and
@@ -6,7 +6,7 @@
    - #cur/#cdot  custom cursor (ring grows over links, buttons, cards, form fields)
    - #hud        live X / Y / scroll read-out (bottom-right)
    - scramble    small mono labels decode when they scroll into view
-   Add selectors to ZONE_SEL to keep the network out of any artwork (e.g. a hero image). */
+   The network hides itself over the 3D service cards (ZONE_SEL). */
 (function () {
   'use strict';
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -36,8 +36,8 @@
     addEventListener('pointermove', function (e) { m.x = e.clientX; m.y = e.clientY; }, { passive: true });
     document.addEventListener('pointerleave', function () { m.x = m.y = -999; });
 
-    /* artwork the network should stay out of (white .lt sections) */
-    var ZONE_SEL = '.lt';
+    /* artwork the network should stay out of (the 3D service cards) */
+    var ZONE_SEL = '.svc .scene .card';
     function zones() {
       var z = [], els = ZONE_SEL ? $$(ZONE_SEL) : [], i, r;
       for (i = 0; i < els.length; i++) {
@@ -93,7 +93,7 @@
     var X = innerWidth / 2, Y = innerHeight / 2, rx = X, ry = Y;
     addEventListener('pointermove', function (e) {
       X = e.clientX; Y = e.clientY; cd.style.transform = 'translate(' + X + 'px,' + Y + 'px)';
-      cr.classList.toggle('h', !!(e.target.closest && e.target.closest('a,button,.bt,.card,input,textarea,select')));
+      cr.classList.toggle('h', !!(e.target.closest && e.target.closest('a,button,.bt,.lk,.scene,input,textarea,select')));
     }, { passive: true });
     (function f() {
       rx += (X - rx) * .16; ry += (Y - ry) * .16; cr.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
@@ -115,7 +115,7 @@
     var so = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { so.unobserve(e.target); scr(e.target); } });
     }, { threshold: .6 });
-    $$('.tag, .card small, .badge').forEach(function (e) {
+    $$('.tg, .ey, .ps small, .no, .ti h3').forEach(function (e) {
       if (!e.children.length && e.textContent.trim()) { e.dataset.t = e.textContent; so.observe(e); }
     });
   }

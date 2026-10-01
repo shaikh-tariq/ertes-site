@@ -1,14 +1,17 @@
-/* ERTES — Solutions page: Homepage background + pointer interaction, ported to solutions.html.
+/* ERTES — About page: Homepage background + pointer interaction, ported to about.html.
    Same layers and behaviour as the Homepage ("futuristic extras" + global network):
    - #fx / #gr   ambient glow blobs, grid and film grain
    - #gn         fixed particle network: dots drift, get pushed away by the pointer and
                  connect to it with lines; a soft glow follows the cursor
-   - #cur/#cdot  custom cursor (ring grows over links, buttons, cards, form fields)
-   - #hud        live X / Y / scroll read-out (bottom-right)
-   - scramble    small mono labels decode when they scroll into view
-   Add selectors to ZONE_SEL to keep the network out of any artwork (e.g. a hero image). */
+   - #cur/#cdot  custom cursor (ring grows over links, buttons, cards)
+   - #hud        live X / Y / scroll read-out
+   - tilt        award cards tilt toward the pointer
+   - scramble    small labels decode when they scroll into view
+   The network is hidden over the About page's own artwork (CEO photo, awards photo,
+   team portraits/cards, brand card, culture photos) so it never fights with it. */
 (function () {
   'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var B = document.body,
     coarse = matchMedia('(pointer:coarse)').matches,
@@ -36,12 +39,15 @@
     addEventListener('pointermove', function (e) { m.x = e.clientX; m.y = e.clientY; }, { passive: true });
     document.addEventListener('pointerleave', function () { m.x = m.y = -999; });
 
-    /* artwork the network should stay out of (white .lt sections) */
-    var ZONE_SEL = '.lt';
+    /* artwork the network should stay out of */
+    var ZONE_SEL = '.ceo-stage, #ovl, .tm2-view, .tm2 .cd, .br-card, .fly, #cl .ph';
     function zones() {
-      var z = [], els = ZONE_SEL ? $$(ZONE_SEL) : [], i, r;
+      var z = [], els = $$(ZONE_SEL), i, r, e;
       for (i = 0; i < els.length; i++) {
-        r = els[i].getBoundingClientRect();
+        e = els[i];
+        if (e.classList.contains('gone') || (e.classList.contains('br-card') && !e.classList.contains('show'))) continue;
+        if (parseFloat(getComputedStyle(e).opacity) < .1) continue;
+        r = e.getBoundingClientRect();
         if (r.width > 0 && r.bottom > 0 && r.top < H) z.push(r);
       }
       return z;
@@ -93,7 +99,7 @@
     var X = innerWidth / 2, Y = innerHeight / 2, rx = X, ry = Y;
     addEventListener('pointermove', function (e) {
       X = e.clientX; Y = e.clientY; cd.style.transform = 'translate(' + X + 'px,' + Y + 'px)';
-      cr.classList.toggle('h', !!(e.target.closest && e.target.closest('a,button,.bt,.card,input,textarea,select')));
+      cr.classList.toggle('h', !!(e.target.closest && e.target.closest('a,button,.bt,input,.cd,.br-w,.gw,.ac div,.tm2-c')));
     }, { passive: true });
     (function f() {
       rx += (X - rx) * .16; ry += (Y - ry) * .16; cr.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
@@ -101,6 +107,20 @@
       hd.innerHTML = 'SYS.ONLINE <b>●</b> &nbsp;X ' + String(X | 0).padStart(4, '0') + ' Y ' + String(Y | 0).padStart(4, '0') + ' &nbsp;SCROLL ' + String(sc).padStart(2, '0') + '%';
       requestAnimationFrame(f);
     })();
+  }
+
+  /* ---------- tilt: award cards lean toward the pointer (like Homepage cards) ---------- */
+  if (!coarse && !reduce) {
+    document.addEventListener('pointermove', function (v) {
+      var e = v.target.closest && v.target.closest('.ac div');
+      if (!e) return;
+      var r = e.getBoundingClientRect(), px = (v.clientX - r.left) / r.width - .5, py = (v.clientY - r.top) / r.height - .5;
+      e.style.transform = 'perspective(900px) rotateX(' + (-py * 7) + 'deg) rotateY(' + (px * 9) + 'deg) translateZ(0)';
+    }, { passive: true });
+    document.addEventListener('pointerout', function (v) {
+      var e = v.target.closest && v.target.closest('.ac div');
+      if (e && !e.contains(v.relatedTarget)) e.style.transform = '';
+    });
   }
 
   /* ---------- scramble-decode small labels on reveal (same as Homepage) ---------- */
@@ -115,7 +135,7 @@
     var so = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { so.unobserve(e.target); scr(e.target); } });
     }, { threshold: .6 });
-    $$('.tag, .card small, .badge').forEach(function (e) {
+    $$('.tag, .hw2-tag, .ov-tag, #aw .tg').forEach(function (e) {
       if (!e.children.length && e.textContent.trim()) { e.dataset.t = e.textContent; so.observe(e); }
     });
   }

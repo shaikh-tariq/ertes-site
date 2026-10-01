@@ -1,14 +1,16 @@
-/* ERTES — Solutions page: Homepage background + pointer interaction, ported to solutions.html.
+/* ERTES — Contact page: Homepage background + pointer interaction, ported to contact.html.
    Same layers and behaviour as the Homepage ("futuristic extras" + global network):
    - #fx / #gr   ambient glow blobs, grid and film grain
    - #gn         fixed particle network: dots drift, get pushed away by the pointer and
                  connect to it with lines; a soft glow follows the cursor
-   - #cur/#cdot  custom cursor (ring grows over links, buttons, cards, form fields)
-   - #hud        live X / Y / scroll read-out (bottom-right)
+   - #cur/#cdot  custom cursor (ring grows over links, buttons, form fields)
+   - #hud        live X / Y / scroll read-out (bottom-right, clear of the footer clock)
    - scramble    small mono labels decode when they scroll into view
-   Add selectors to ZONE_SEL to keep the network out of any artwork (e.g. a hero image). */
+   The network is hidden over the hero logo and the footer "ERTES" lines canvas, which
+   are interactive artwork of their own. */
 (function () {
   'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var B = document.body,
     coarse = matchMedia('(pointer:coarse)').matches,
@@ -36,10 +38,10 @@
     addEventListener('pointermove', function (e) { m.x = e.clientX; m.y = e.clientY; }, { passive: true });
     document.addEventListener('pointerleave', function () { m.x = m.y = -999; });
 
-    /* artwork the network should stay out of (white .lt sections) */
-    var ZONE_SEL = '.lt';
+    /* artwork the network should stay out of */
+    var ZONE_SEL = '#hero .rig, #lines';
     function zones() {
-      var z = [], els = ZONE_SEL ? $$(ZONE_SEL) : [], i, r;
+      var z = [], els = $$(ZONE_SEL), i, r;
       for (i = 0; i < els.length; i++) {
         r = els[i].getBoundingClientRect();
         if (r.width > 0 && r.bottom > 0 && r.top < H) z.push(r);
@@ -93,7 +95,7 @@
     var X = innerWidth / 2, Y = innerHeight / 2, rx = X, ry = Y;
     addEventListener('pointermove', function (e) {
       X = e.clientX; Y = e.clientY; cd.style.transform = 'translate(' + X + 'px,' + Y + 'px)';
-      cr.classList.toggle('h', !!(e.target.closest && e.target.closest('a,button,.bt,.card,input,textarea,select')));
+      cr.classList.toggle('h', !!(e.target.closest && e.target.closest('a,button,.pill,input,textarea,.sel,.it,.call,.send')));
     }, { passive: true });
     (function f() {
       rx += (X - rx) * .16; ry += (Y - ry) * .16; cr.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
@@ -103,7 +105,7 @@
     })();
   }
 
-  /* ---------- scramble-decode small labels on reveal (same as Homepage) ---------- */
+  /* ---------- scramble-decode small mono labels on reveal (same as Homepage) ---------- */
   if (!reduce && 'IntersectionObserver' in window) {
     var GL = '01ABCDEF<>/_#$%';
     var scr = function (e) {
@@ -115,7 +117,7 @@
     var so = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { so.unobserve(e.target); scr(e.target); } });
     }, { threshold: .6 });
-    $$('.tag, .card small, .badge').forEach(function (e) {
+    $$('#cta .meta b, .or').forEach(function (e) {
       if (!e.children.length && e.textContent.trim()) { e.dataset.t = e.textContent; so.observe(e); }
     });
   }
